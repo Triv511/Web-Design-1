@@ -1,0 +1,154 @@
+/* ================================
+   CLOCK STYLING
+================================ */
+#clock {
+  font-size: 2rem;          /* Large font for visibility */
+  font-weight: bold;        /* Emphasize the text */
+  margin-top: 20px;         /* Space above the clock */
+  text-align: center;       /* Center the clock */
+}
+
+#rich-message {
+  margin-top: 10px;        /* Space above the message */
+  font-size: 1.5rem;       /* Slightly larger font */
+  font-weight: bold;       /* Emphasize the message */
+  text-align: center;      /* Center the message */
+  color: #61cff4;          /* Distinct color for visibility */
+}
+
+/* ================================
+   PURCHASE GRID
+================================ */
+.purchase-grid {
+  display: grid;         /* Use CSS Grid layout */
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Responsive columns, min width 300px */
+  gap: 20px;             /* Space between grid items */
+  width: 100%;           /* Full width container */
+  margin-bottom: 20px;   /* Space below grid */
+}
+
+/* ================================
+   PURCHASE CARD
+================================ */
+.purchase-card {
+  width: 100%;           /* Full width card */
+  padding: 6px;         /* Padding inside card */
+  border-radius: 12px;  /* Rounded corners */
+  background-color: #190981;  /* Dark blue background */
+  box-shadow: #1a1a1a 2px 2px 5px; /* Subtle shadow for depth */
+  text-align: center;  /* Center content */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth hover effect */
+}
+
+/* Artwork image inside card */
+.purchase-card img {
+  width: 100%;           /* Full width image */
+  height: 250px;         /* Fixed height */
+  object-fit: cover;     /* Cover the area without distortion */
+  display: block;        /* Block display for layout */
+  border-radius: 12px;   /* Rounded corners */
+}
+
+/* Selected card effect */
+.purchase-card.selected {
+  outline: 4px solid #00ffea; /* Highlight with cyan outline */
+  transform: scale(1.03);     /* Slightly enlarge */
+  box-shadow: 0 0 15px #00fff2; /* Glow effect */
+}
+
+/* ================================
+   ARTWORK SELECTION PANEL
+================================ */
+.select-artwork {
+  margin-bottom: 10px; /* Space below heading */
+}
+
+#selected-artworks {
+  list-style: none; /* Remove bullets */
+  padding-left: 0;  /* Remove left padding */
+  margin-bottom: 10px; /* Space below list */
+}
+
+#selected-artworks li {
+  padding: 4px 0;  /* Vertical padding */
+  font-weight: bold; /* Emphasize selected items */
+}
+
+/* ================================
+   TOTAL COST BUTTON
+================================ */
+#total-cost {
+  cursor: pointer; /* Pointer cursor to indicate clickable */
+  background-color: #00ffea; /* Bright cyan background */
+  color: #190981; /* Dark blue text */
+  padding: 10px 15px; /* Padding inside button */
+  border-radius: 8px; /* Rounded corners */
+  font-weight: bold; /* Bold text */
+  display: inline-block; /* Inline block for layout */
+  transition: transform 0.2s ease; /* Smooth transform on hover/active */
+  box-shadow: #1a1a1a 2px 2px 5px; /* Subtle shadow for depth */
+}
+
+#total-cost:hover {
+  transform: scale(1.05);
+}
+
+#total-cost:active {
+  transform: translateY(4px); /* Simulate button press */
+  box-shadow: #1a1a1a 2px 2px 5px; /* Subtle shadow for depth */
+}
+
+/* ================================
+   MEDIA QUERIES
+================================ */
+
+/* Small screens: up to 480px */
+@media (max-width: 480px) {
+  #clock {
+    font-size: 1.5rem; /* Smaller clock font */
+  }
+
+  .purchase-grid {
+    grid-template-columns: 1fr; /* Single column */
+    gap: 15px; /* Reduce spacing */
+  }
+
+  .purchase-card img {
+    height: 200px; /* Smaller images */
+  }
+
+  .select-artwork h2 {
+    font-size: 1.2rem; /* Smaller heading */
+  }
+
+  #selected-artworks li {
+    font-size: 0.9rem; /* Smaller list items */
+  }
+}
+
+/* Medium screens: 481px to 1024px */
+@media (min-width: 481px) and (max-width: 1024px) {
+  #clock {
+    font-size: 1.8rem; /* Medium clock font */
+  }
+
+  .purchase-grid {
+    grid-template-columns: repeat(2, 1fr); /* Two columns */
+    gap: 20px; /* Standard spacing */
+  }
+
+  .purchase-card img {
+    height: 220px; /* Medium image height */
+  }
+
+  .select-artwork h2 {
+    font-size: 1.4rem; /* Medium heading */
+  }
+
+  #selected-artworks li {
+    font-size: 1rem; /* Medium list items */
+  }
+}
+
+/* Large screens: 1025px and up */
+/* Default styles already serve as large screen styling */

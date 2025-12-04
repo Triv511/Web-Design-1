@@ -1,0 +1,159 @@
+/* ============================================
+   EVENT SCHEDULE - STARTER CSS
+   STUDENTS: Complete the sections marked with comments
+   ============================================ */
+
+/* BASIC RESET AND BODY STYLING */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif; /* STUDENTS: Change to Google Fonts */
+    line-height: 1.6;
+    color: #333;
+    /* STUDENTS: Add background color */
+}
+
+/* HEADER AND NAVIGATION - Basic structure provided */
+header {
+    background-color: #2962ff;
+    padding: 1rem;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.1rem;
+}
+
+/* STUDENTS: Add hover effect for navigation links */
+nav a:hover {
+    
+}
+
+/* MAIN CONTENT AREA */
+main {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+main h1 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    /* STUDENTS: Add color and custom font */
+}
+
+.schedule-intro {
+    text-align: center;
+    font-size: 1.1rem;
+    margin-bottom: 3rem;
+    /* STUDENTS: Add styling */
+}
+
+/* SCHEDULE CONTAINER */
+.schedule-container {
+    /* Container for all speaker cards */
+}
+
+/* SPEAKER CARDS - Basic structure provided */
+.speaker-card {
+    margin-bottom: 2rem;
+    overflow: hidden; /* Helps contain floated images */
+    /* STUDENTS: Add background color */
+    /* STUDENTS: Add padding */
+    /* STUDENTS: Add border or box-shadow */
+    /* STUDENTS: Consider adding border-radius */
+}
+
+/* SPEAKER IMAGE - Floated left */
+.speaker-image {
+    width: 180px;
+    height: 180px;
+    object-fit: cover;
+    float: left;
+    margin-right: 1.5rem;
+    /* STUDENTS: Add border, border-radius, or box-shadow */
+}
+
+/* SPEAKER INFO SECTION */
+.speaker-info {
+    /* Text content flows around the floated image */
+}
+
+.speaker-name {
+    font-size: 1.5rem;
+    margin-bottom: 0.3rem;
+    /* STUDENTS: Add color and font styling */
+}
+
+.speaker-title {
+    font-size: 1rem;
+    color: #666;
+    margin-bottom: 0.5rem;
+    font-style: italic;
+    /* STUDENTS: Adjust styling */
+}
+
+.session-time {
+    font-size: 0.95rem;
+    font-weight: bold;
+    margin-bottom: 0.8rem;
+    /* STUDENTS: Add color - maybe use an accent color */
+}
+
+.speaker-bio {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: #444;
+    /* STUDENTS: Adjust styling */
+}
+
+/* STUDENTS: Add hover effect for speaker cards */
+.speaker-card:hover {
+    
+}
+
+/* KEYNOTE SPEAKERS - Should be styled differently */
+/* STUDENTS: Make keynote speakers stand out with different styling */
+/* Ideas: different background color, border, larger text, special badge */
+.speaker-card.keynote {
+    
+}
+
+/* STUDENTS: You could add a badge to keynote speakers using ::before */
+.speaker-card.keynote::before {
+    /* Example: content: "⭐ KEYNOTE SPEAKER"; */
+}
+
+/* CLEARING FLOATS */
+.speaker-card::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+/* FOOTER */
+footer {
+    background-color: #2962ff;
+    color: white;
+    text-align: center;
+    padding: 1.5rem;
+    margin-top: 3rem;
+    clear: both;
+}
+
+/* ============================================
+   STUDENTS: Add any additional styling below
+   ============================================ */

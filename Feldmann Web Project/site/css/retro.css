@@ -1,0 +1,196 @@
+@import url('https://fonts.googleapis.com/css2?family=Comic+Neue:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap');
+
+#carForm {
+    text-align: center;
+}
+
+#carForm button {
+    display: inline-block;
+}
+
+nav ul {
+  list-style: none; /* Remove default list styling */
+  display: flex; /* Flexbox for layout */
+  justify-content: center; /* Center items */
+  gap: 5rem; /* Space between items */
+}
+
+nav a {
+    color: white; /* white text */
+    text-decoration: none; /* remove underline */
+    font-size: 1.1rem; /* slightly larger font */
+    transition: color 0.3s ease; /* smooth color change */
+    white-space: normal; /* allow wrapping */
+}
+
+nav img {
+    width: 20px; /* icon size */
+    height: 20px; /* icon size */
+    vertical-align: middle; /* align with text */
+    margin-right: 8px; /* space from text */
+}
+
+nav a:hover {
+    color: #50a3e6; /* light blue on hover */
+    text-decoration: underline; /* underline on hover */
+}
+
+input[type="text"],
+input[type="number"],
+input[type="email"],
+input[type="radio"],
+select {
+    background-color: #333;
+    color: white;
+    border: 2px solid silver;
+    border-radius: 5px;
+    padding: 8px;
+    font-family: 'Comic Neue', cursive;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+::placeholder {
+    color: #bbb; /* light gray placeholder text */
+}
+
+input[type="number"] {
+    width: 80px; /* narrower for numbers */
+}
+
+textarea {
+    background-color: #333;
+    color: white;
+    border: 2px solid silver;
+    border-radius: 5px;
+    padding: 8px;
+    font-family: 'Comic Neue', cursive;
+    margin-bottom: 10px;
+}
+
+.form{
+    background-color: #222;
+    justify-content: center;
+}
+
+.form-group {
+    position: relative;
+    text-align: center;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.radio-group {
+    display: flex;
+    justify-content: center;
+    gap: 10px;      /* spacing between options */
+    align-items: center;
+    flex-wrap: wrap; /* optional, allows wrapping on small screens */
+}
+
+.radio-group input[type="radio"] {
+    margin-right: 4px;
+}
+
+.form-group .radio-group label {
+    display: inline; /* prevents radio labels from forcing new lines */
+}
+
+body.retro-bg {
+    background: black;
+    color: white;
+    font-family: "Courier New", monospace;
+}
+
+.container {
+    padding: 20px;
+    margin: auto;
+    max-width: 900px;
+}
+
+.checkerboard {
+    --size: 48px;           /* size of each square */
+    background:
+      repeating-conic-gradient(
+        #222 0deg 90deg,    /* dark */
+        #eee 90deg 180deg   /* light */
+      );
+    background-size: var(--size) var(--size);
+}
+
+.chrome-title {
+    font-size: 3rem;
+    text-align: center;
+    color: #e00000;
+    text-shadow: 0px 0px 3px white, 0 0 10px silver;
+}
+
+.retro-button {
+    padding: 10px 20px;
+    background: red;
+    color: white;
+    border: 3px solid silver;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.2s;
+    margin-bottom: 15px;
+}
+
+.retro-button:hover {
+    background: white;
+    color: red;
+}
+
+.retro-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    color: black;
+}
+
+.retro-table th, .retro-table td {
+    border: 2px solid black;
+    padding: 10px;
+    background: #fff;
+}
+
+.controls {
+    margin-bottom: 15px;
+    display: flex;
+    gap: 10px;
+}
+
+.footer {
+    background-color: #1a1a1a; /* dark footer */
+    color: white; /* white text */
+    text-align: center; /* center text */
+    padding: 1rem; /* padding around */
+    margin-top: 3rem; /* space above */
+    clear: both; /* clear floats */
+    font-family: 'Comic Neue', cursive; /* fun, casual font */
+}
+
+/* Default (no highlight until user interacts) */
+input, select {
+    border: 2px solid #444;
+    outline: none;
+    transition: 0.2s;
+}
+
+/* Apply highlighting only AFTER user clicks into the field */
+input.touched:invalid,
+select.touched:invalid {
+    border-color: red;
+    box-shadow: 0 0 6px red;
+}
+
+/* Valid highlight AFTER user interacts */
+input.touched:valid,
+select.touched:valid {
+    border-color: limegreen;
+    box-shadow: 0 0 6px limegreen;
+}

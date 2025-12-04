@@ -1,0 +1,438 @@
+/* =========================================================
+   GOOGLE FONTS
+========================================================= */
+@import url('https://fonts.googleapis.com/css2?family=Comic+Neue:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap');
+
+/* =========================================================
+   BASE STYLES
+========================================================= */
+html {
+    overflow-y: scroll; /* always show vertical scrollbar */
+}
+
+* {
+    margin: 0; /* reset margin and padding */
+    padding: 0; /* reset margin and padding */
+    box-sizing: border-box; /* include padding and border in element's total width and height */
+}
+
+html, body {
+    margin: 0; /* reset margin and padding */
+    padding: 0; /* reset margin and padding */
+}
+
+body {
+    font-family: 'Comic Neue', cursive; /* fun, casual font */
+    line-height: 1.6; /* improve readability */
+    color: #50a3e6; /* light blue text */
+    background-color: #080a59; /* dark blue background */
+    margin-top: 40px; /* space for fixed header */
+}
+
+/* =========================================================
+   HEADER & NAVIGATION
+========================================================= */
+header {
+    background-color: #1a1a1a; /* dark header */
+    padding: 1rem; /* padding around nav */
+    position: fixed; /* fixed at top */
+    top: 0; /* fixed at top */
+    left: 0; /* fixed at left */
+    width: 100%; /* full width */
+    z-index: 1000; /* on top of other content */
+}
+
+.header-spacer,
+.spacer {
+    height: 70px; /* height of fixed header */
+}
+
+nav ul {
+  list-style: none; /* Remove default list styling */
+  display: flex; /* Flexbox for layout */
+  justify-content: center; /* Center items */
+  gap: 5rem; /* Space between items */
+}
+
+nav a {
+    color: white; /* white text */
+    text-decoration: none; /* remove underline */
+    font-size: 1.1rem; /* slightly larger font */
+    transition: color 0.3s ease; /* smooth color change */
+    white-space: normal; /* allow wrapping */
+}
+
+nav img {
+    width: 20px; /* icon size */
+    height: 20px; /* icon size */
+    vertical-align: middle; /* align with text */
+    margin-right: 8px; /* space from text */
+}
+
+nav a:hover {
+    color: #50a3e6; /* light blue on hover */
+    text-decoration: underline; /* underline on hover */
+}
+
+/* =========================================================
+   MAIN CONTENT
+========================================================= */
+main,
+main.container {
+    max-width: 1200px; /* limit width */
+    margin: 0 auto; /* center horizontally */
+    padding: 2rem; /* padding around content */
+    text-align: center; /* center text */
+    padding-top: 100px; /* push below navbar */
+}
+
+/* =========================================================
+   HERO SECTION
+========================================================= */
+#hero-image {
+    display: flex; /* flexbox for layout */
+    flex-direction: column; /* stack vertically */
+    align-items: center; /* center items */
+    text-align: center; /* center text */
+    padding: 1rem; /* padding around */
+    background-color: #243290; /* slightly lighter blue */
+    border-radius: 25%; /* rounded corners */
+    overflow: hidden; /* contain children */
+}
+
+#hero-image img {
+    width: 100%; /* full width */
+    max-width: 400px; /* limit max width */
+    height: auto; /* maintain aspect ratio */
+    border-radius: 25%; /* rounded corners */
+}
+
+#hero-image p {
+    font-size: 1rem; /* slightly larger font */
+    max-width: 90%; /* limit width */
+    margin: 1rem auto 0; /* space above */
+    line-height: 1.6; /* improve readability */
+    color: #2897e7; /* lighter blue text */
+    word-wrap: break-word; /* wrap long words */
+}
+
+/* =========================================================
+   FEATURED ARTIST
+========================================================= */
+.featured-artist {
+    text-align: center; /* center text */
+    font-size: 1.1rem; /* slightly larger font */
+    margin-bottom: 3rem; /* space below */
+}
+
+.featured-artist img {
+    width: 300px; /* fixed width */
+    max-width: 90%; /* responsive */
+    height: auto; /* maintain aspect ratio */
+    border-radius: 50px; /* rounded corners */
+    box-shadow: #1a1a1a 0 4px 8px; /* subtle shadow */
+    margin: 1rem; /* space around */
+}
+.featured-artist a:visited {
+    color: #a439e7; /* visited link color */
+}
+
+.van-gogh-artworks h2 {
+    margin-bottom: 1rem; /* space below */
+}
+
+/* =========================================================
+   ART SECTION & SLIDESHOW
+========================================================= */
+.art-section {
+    width: 100%; /* full width */
+    margin: 0; /* reset margin */
+    padding: 0; /* reset padding */
+    overflow: hidden; /* contain floats */
+    box-shadow: 10px 0 0 #50a3e6; /* blue left border */
+    border-radius: 12px; /* rounded corners */
+}
+
+/* Slideshow */
+.slideshow-container {
+    float: left; /* float left */
+    width: 600px; /* fixed width */
+    height: 600px; /* fixed height */
+    margin-right: 2rem; /* space to right */
+    position: relative; /* for absolute children */
+    border-radius: 12px; /* rounded corners */
+    overflow: hidden; /* contain children */
+    background-color: #080a59; /* dark background */
+    /* The line below applies a radial gradient mask (circular 
+    or elliptical gradient) that makes part of the element 
+    visible and other parts transparent, creating a smooth 
+    fade-out around the edges. */
+    -webkit-mask-image: -webkit-radial-gradient(white, black); /* smooth edges */
+    mask-image: radial-gradient(white, black); /* smooth edges */
+    clip-path: inset(0 round 12px); /* clip to rounded corners */
+    will-change: transform; /* optimize for animations */
+}
+
+.slide {
+    display: none; /* hide by default */
+    position: absolute; /* stack on top of each other */
+    top: 0; /* position at top */
+    left: 0; /* position at left */
+    width: 100%; /* full width */
+    height: 100%; /* full height */
+}
+
+.slide.active {
+    display: block; /* show active slide */
+}
+
+.slide img {
+    width: 100%; /* full width */
+    height: 100%; /* full height */
+    object-fit: cover; /* cover container */
+    transform: translateZ(0);   /* improve performance */
+    backface-visibility: hidden;  /* improve performance */
+    -webkit-backface-visibility: hidden; /* improve performance */
+}
+
+/* =========================================================
+   YOUR JOURNEY
+========================================================= */
+.your-journey {
+    float: left; /* float left */
+    width: 35%; /* fixed width */
+    max-width: 600px; /* limit max width */
+    margin: 0 auto 2rem; /* center and space below */
+    text-align: center; /* center text */
+    padding-top: 90px; /* align with slideshow */
+}
+
+/* Clearfix */
+.art-section::after {
+    content: ""; /* clearfix */
+    display: block; /* clearfix */
+    clear: both; /* clearfix */
+}
+
+/* =========================================================
+   VISIT US
+========================================================= */
+.visit-us {
+    display: flex; /* flexbox for layout */
+    align-items: center; /* center vertically */
+    justify-content: space-between; /* space between */
+    gap: 2rem; /* space between */
+    font-size: 1.1rem; /* slightly larger font */
+    margin-top: 3rem; /* space above */
+    padding: 1rem; /* padding around */
+    box-shadow: -10px 0 0 #50a3e6; /* blue right border */
+    border-radius: 12px; /* rounded corners */
+}
+
+.visit-us img {
+    width: 45%; /* nearly half width */
+    max-width: 400px; /* limit max width */
+    border-radius: 12px; /* rounded corners */
+    box-shadow: #1a1a1a 2px 2px 5px; /* subtle shadow */
+}
+
+.visit-us h2,
+.visit-us p {
+    max-width: 100%; /* full width */
+}
+
+.visit-us a {
+    color: #50a3e6; /* light blue links */
+    text-decoration: none; /* remove underline */
+}
+
+.visit-us a:hover {
+    text-decoration: underline; /* underline on hover */
+}
+
+/* =========================================================
+   ARTWORK CARDS
+========================================================= */
+.artwork-card {
+    width: 31%; /* three cards per row */
+    float: left; /* float left */
+    margin: 1%; /* space around */
+    padding: 6px; /* padding inside */
+    box-shadow: #1a1a1a 2px 2px 5px; /* subtle shadow */
+    border-radius: 12px; /* rounded corners */
+    background-color: #190981; /* dark blue background */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* smooth hover */
+}
+
+.artwork-card img {
+    width: 80%; /* most of card width */
+    max-width: 100%; /* responsive */
+    height: auto; /* maintain aspect ratio */
+    display: block; /* block element */
+    margin: 15px auto; /* center horizontally */
+    border-radius: 12px; /* rounded corners */
+    border: 5px solid #4dacfa; /* blue border */
+}
+
+.artwork-card:hover {
+    transform: scale(1.05); /* slightly enlarge */
+    box-shadow: #1a1a1a 4px 4px 15px; /* stronger shadow */
+    color: aliceblue; /* text color on hover */
+}
+
+/* =========================================================
+   NEWSLETTER
+========================================================= */
+.newsletter-section {
+    background-color: #f0f4f8; /* light background */
+    padding: 50px 20px; /* padding around */
+    text-align: center; /* center text */
+    font-family: Arial, sans-serif; /* clean font */
+}
+
+.newsletter-container h2 {
+    font-size: 2rem; /* large heading */
+    margin-bottom: 10px; /* space below */
+    color: #333; /* dark text */
+}
+
+.newsletter-container p {
+    font-size: 1rem; /* normal font */
+    margin-bottom: 20px; /* space below */
+    color: #555; /* medium text */
+}
+
+.newsletter-form {
+    display: flex; /* flexbox for layout */
+    justify-content: center; /* center form */
+    gap: 10px; /* space between */
+    flex-wrap: wrap; /* wrap on small screens */
+}
+
+.newsletter-form input[type="email"] {
+    padding: 10px 15px; /* padding inside */
+    font-size: 1rem; /* normal font */
+    border: 1px solid #ccc; /* light border */
+    border-radius: 5px; /* rounded corners */
+    flex: 1; /* take available space */
+    min-width: 250px; /* minimum width */
+}
+
+.newsletter-form button {
+    padding: 10px 20px; /* padding inside */
+    font-size: 1rem; /* normal font */
+    background-color: #50a3e6;  /* light blue button */
+    color: white; /* white text */
+    border: none; /* remove border */
+    border-radius: 5px; /* rounded corners */
+    cursor: pointer; /* pointer cursor */
+    transition: background-color 0.3s ease; /* smooth transition */
+}
+
+.newsletter-form button:hover {
+    background-color: #3d82c7; /* darker blue on hover */
+}
+
+/* =========================================================
+   FOOTER
+========================================================= */
+.footer {
+    background-color: #1a1a1a; /* dark footer */
+    color: white; /* white text */
+    text-align: center; /* center text */
+    padding: 1rem; /* padding around */
+    margin-top: 3rem; /* space above */
+    clear: both; /* clear floats */
+}
+
+/* =========================================================
+   ANIMATIONS
+========================================================= */
+@keyframes fade {
+    from { opacity: 0; } /* start transparent */
+    to { opacity: 1; } /* end opaque */
+}
+
+/* =========================================================
+   MEDIA QUERIES
+========================================================= */
+
+/* --- Mobile Navigation --- */
+@media screen and (max-width: 480px) {
+    nav ul {
+        flex-direction: column; /* stack vertically */
+        gap: 1rem; /* reduce gap */
+    }
+
+    nav img {
+        width: 24px; /* larger icon for touch */
+        height: 24px; /* larger icon for touch */
+    }
+
+    #hero-image h1 {
+        font-size: 1.3rem; /* slightly smaller */
+    }
+
+    #hero-image p {
+        font-size: 0.9rem; /* smaller text */
+        max-width: 95%; /* more width */
+    }
+}
+
+/* --- Artwork Cards (Tablets) --- */
+@media screen and (max-width: 1024px) {
+    .artwork-card {
+        width: 48%; /* two cards per row */
+        margin: 1%; /* space around */
+    }
+}
+
+/* --- Artwork Cards (Mobile) --- */
+@media screen and (max-width: 600px) {
+    .artwork-card {
+        width: 98%; /* single column */
+        margin: 1% 0; /* vertical space */
+    }
+
+    .featured-artist img {
+        width: 80%; /* larger on small screens */
+        max-width: 250px; /* limit max width */
+    }
+}
+
+/* --- Stack Sections (Tablets & Smaller) --- */
+@media screen and (max-width: 768px) {
+    .visit-us,
+    .art-section {
+        display: block; /* stack vertically */
+    }
+
+    .slideshow-container,
+    .your-journey,
+    .visit-us img {
+        float: none; /* reset float */
+        width: 100%; /* full width */
+        max-width: 400px; /* limit max width */
+        margin: 0 auto 1.5rem; /* center and space below */
+    }
+
+    .visit-text,
+    .your-journey {
+        text-align: center; /* center text */
+    }
+
+    .slideshow-container .slide img {
+        width: 100%; /* full width */
+        height: auto; /* maintain aspect ratio */
+        max-width: 100%; /* limit max width */
+        display: block; /* block element */
+    }
+}
+
+/* --- Adjust Body Margin for Stacked Nav --- */
+@media (max-width: 700px) {
+    body {
+        margin-top: 120px; /* Adjust for stacked nav */
+    }
+}
+
