@@ -1,0 +1,1370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page 2 Completion Instructions - Guided Practice</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(45deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+            padding: 40px 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: rotate 25s linear infinite;
+        }
+
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            position: relative;
+            z-index: 1;
+        }
+
+        .subtitle {
+            font-size: 1.2em;
+            font-weight: 300;
+            position: relative;
+            z-index: 1;
+        }
+
+        .content {
+            padding: 40px;
+        }
+
+        .overview-section {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 40px;
+        }
+
+        .overview-section h2 {
+            color: #ffd93d;
+            margin-bottom: 15px;
+            font-size: 1.8em;
+        }
+
+        .overview-section ul {
+            margin-left: 20px;
+            margin-bottom: 15px;
+        }
+
+        .overview-section li {
+            margin-bottom: 8px;
+            font-size: 1.1em;
+        }
+
+        .section {
+            margin-bottom: 50px;
+            border: 3px solid #e9ecef;
+            border-radius: 15px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .section:hover {
+            border-color: #667eea;
+            box-shadow: 0 15px 30px rgba(102, 126, 234, 0.2);
+        }
+
+        .section-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 25px;
+            text-align: center;
+        }
+
+        .section-header h2 {
+            font-size: 1.8em;
+            margin-bottom: 5px;
+        }
+
+        .section-content {
+            padding: 30px;
+        }
+
+        .task-category {
+            background: #f8f9fa;
+            margin: 25px 0;
+            border-radius: 12px;
+            padding: 25px;
+            border-left: 5px solid #667eea;
+            position: relative;
+        }
+
+        .task-category::before {
+            content: '';
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            width: 30px;
+            height: 30px;
+            background: #667eea;
+            border-radius: 50%;
+            opacity: 0.1;
+        }
+
+        .task-title {
+            color: #2c3e50;
+            font-size: 1.4em;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #667eea;
+            display: inline-block;
+            padding-bottom: 5px;
+        }
+
+        .task-list {
+            margin-left: 0;
+            list-style: none;
+        }
+
+        .task-list li {
+            margin-bottom: 8px;
+            padding-left: 25px;
+            position: relative;
+            color: #555;
+            line-height: 1.5;
+        }
+
+        .task-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            top: 0;
+            color: #28a745;
+            font-weight: bold;
+        }
+
+        .steps-list {
+            counter-reset: step-counter;
+            margin-left: 0;
+            list-style: none;
+        }
+
+        .steps-list li {
+            margin-bottom: 12px;
+            padding-left: 30px;
+            position: relative;
+            color: #555;
+            line-height: 1.5;
+        }
+
+        .steps-list li::before {
+            content: counter(step-counter);
+            counter-increment: step-counter;
+            background: #667eea;
+            color: white;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8em;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+            top: 2px;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, #43cea2, #185a9d);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            position: relative;
+        }
+
+        .highlight-box::before {
+            content: '💡';
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 1.5em;
+        }
+
+        .highlight-box h4 {
+            color: #ffd93d;
+            margin-bottom: 10px;
+        }
+
+        .code-example {
+            background: #2d3748;
+            border-radius: 8px;
+            margin: 15px 0;
+            overflow: hidden;
+        }
+
+        .code-example pre {
+            margin: 0;
+            padding: 20px;
+            overflow-x: auto;
+        }
+
+        .code-example code {
+            font-family: 'Courier New', Monaco, monospace;
+            font-size: 0.9em;
+            line-height: 1.4;
+        }
+
+        .option-box {
+            background: #e8f5e8;
+            border: 2px solid #28a745;
+            border-radius: 10px;
+            padding: 15px;
+            margin: 15px 0;
+        }
+
+        .option-box h5 {
+            color: #155724;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+
+        .check-section {
+            background: #fff3cd;
+            border: 2px solid #ffc107;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 15px 0;
+        }
+
+        .check-section strong {
+            color: #856404;
+        }
+
+        .tips-section {
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
+            border-radius: 15px;
+            padding: 30px;
+            margin: 40px 0;
+            color: #721c24;
+        }
+
+        .tips-section h3 {
+            text-align: center;
+            margin-bottom: 25px;
+            font-size: 1.8em;
+            color: #721c24;
+        }
+
+        .tips-category {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border-left: 4px solid #721c24;
+        }
+
+        .tips-category h4 {
+            color: #721c24;
+            margin-bottom: 15px;
+            font-size: 1.2em;
+        }
+
+        .final-section {
+            background: #e8f5e8;
+            border: 3px solid #28a745;
+            border-radius: 15px;
+            padding: 30px;
+            margin: 30px 0;
+            text-align: center;
+        }
+
+        .final-section h3 {
+            color: #155724;
+            margin-bottom: 20px;
+            font-size: 1.6em;
+        }
+
+        .checklist {
+            text-align: left;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .checklist li::before {
+            content: '✅';
+        }
+
+        .issues-list li::before {
+            content: '❌';
+        }
+
+        .navigation {
+            position: fixed;
+            top: 50%;
+            right: 20px;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 25px;
+            padding: 15px 10px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+        }
+
+        .nav-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #ccc;
+            margin: 8px 0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .nav-dot.active {
+            background: #667eea;
+            transform: scale(1.3);
+        }
+
+        .nav-dot:hover {
+            background: #667eea;
+            transform: scale(1.2);
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2em;
+            }
+            
+            .content {
+                padding: 20px;
+            }
+            
+            .navigation {
+                display: none;
+            }
+            
+            .task-category {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="navigation">
+        <div class="nav-dot active" onclick="scrollToSection('overview')"></div>
+        <div class="nav-dot" onclick="scrollToSection('setup')"></div>
+        <div class="nav-dot" onclick="scrollToSection('restaurant')"></div>
+        <div class="nav-dot" onclick="scrollToSection('gallery')"></div>
+        <div class="nav-dot" onclick="scrollToSection('event')"></div>
+        <div class="nav-dot" onclick="scrollToSection('tips')"></div>
+    </div>
+
+    <div class="container">
+        <div class="header">
+            <h1>Page 2 Completion Instructions</h1>
+            <p class="subtitle">Guided Practice - Complete the CSS Styling</p>
+        </div>
+
+        <div class="content">
+            <div class="overview-section" id="overview">
+                <h2>Overview</h2>
+                <p>For Page 2 of your project, you have been provided with:</p>
+                <ul>
+                    <li>✅ Complete HTML structure</li>
+                    <li>✅ Basic CSS layout with floats started</li>
+                    <li>✅ A wireframe image showing what the finished page should look like</li>
+                </ul>
+                <p><strong>Your task:</strong> Complete the CSS styling by following the instructions below. All your work should be done in the styles.css file. Do not modify the HTML unless specifically instructed.</p>
+            </div>
+
+            <!-- Before You Start -->
+            <div class="section" id="setup">
+                <div class="section-header">
+                    <h2>Before You Start</h2>
+                </div>
+                <div class="section-content">
+                    <div class="task-category">
+                        <h3 class="task-title">Step 1: Review Your Files</h3>
+                        <ol class="steps-list">
+                            <li>Open the HTML file in your browser to see the basic structure</li>
+                            <li>Open the CSS file in VS Code to see what's already provided</li>
+                            <li>Look at the wireframe image to see what your finished page should look like</li>
+                            <li>Read through ALL the instructions below before writing any code</li>
+                        </ol>
+                    </div>
+
+                    <div class="task-category">
+                        <h3 class="task-title">Step 2: Set Up Your Workspace</h3>
+                        <ol class="steps-list">
+                            <li>Make sure all files are in the correct folders:
+                                <ul style="margin-left: 30px; margin-top: 10px;">
+                                    <li>HTML file in root folder</li>
+                                    <li>CSS file in css folder</li>
+                                    <li>Images in images folder</li>
+                                </ul>
+                            </li>
+                            <li>Have your browser and VS Code open side-by-side</li>
+                            <li>Use Live Server or refresh frequently to see your changes</li>
+                        </ol>
+                    </div>
+
+                    <div class="task-category">
+                        <h3 class="task-title">Step 3: Find the TODOs</h3>
+                        <ul class="task-list">
+                            <li>Look for comments in the CSS that say <code>/* STUDENTS: ... */</code></li>
+                            <li>These mark places where you need to add or complete code</li>
+                            <li>Work through them systematically from top to bottom</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Restaurant Project -->
+            <div class="section" id="restaurant">
+                <div class="section-header">
+                    <h2>Project 1: Restaurant Menu - Completion Checklist</h2>
+                </div>
+                <div class="section-content">
+                    <div class="task-category">
+                        <h3 class="task-title">Task 1: Import and Apply Google Fonts</h3>
+                        <p><strong>Location:</strong> Top of CSS file, body styling</p>
+                        <p><strong>What to do:</strong></p>
+                        <ol class="steps-list">
+                            <li>Go to Google Fonts</li>
+                            <li>Choose TWO fonts:
+                                <ul style="margin-left: 30px; margin-top: 10px;">
+                                    <li>One for headings (something bold/distinctive)</li>
+                                    <li>One for body text (something readable)</li>
+                                </ul>
+                            </li>
+                            <li>Copy the import statement and paste it at the very top of your CSS file:</li>
+                        </ol>
+                        <div class="code-example">
+                            <pre><code class="language-css">@import url('https://fonts.googleapis.com/css2?family=Your+Font+Here');</code></pre>
+                        </div>
+                        <p>Apply the fonts:</p>
+                        <div class="code-example">
+                            <pre><code class="language-css">body {
+    font-family: 'Your Body Font', sans-serif;
+}
+
+h1, h2, h3 {
+    font-family: 'Your Heading Font', serif;
+}</code></pre>
+                        </div>
+                        <div class="check-section">
+                            <strong>Check:</strong> Do your headings and body text use different fonts?
+                        </div>
+                    </div>
+
+                    <div class="task-category">
+                        <h3 class="task-title">Task 2: Add Color Scheme</h3>
+                        <p><strong>Location:</strong> Multiple places throughout CSS</p>
+                        <p><strong>What to do:</strong></p>
+                        <ol class="steps-list">
+                            <li>Choose a color scheme for your restaurant (3-4 colors)
+                                <ul style="margin-left: 30px; margin-top: 10px;">
+                                    <li>One primary color (for headers, accents)</li>
+                                    <li>One background color (light, for menu items)</li>
+                                    <li>One text accent color</li>
+                                </ul>
+                            </li>
+                            <li>Use RGB or HSL format (NOT hex codes):</li>
+                        </ol>
+                        <div class="code-example">
+                            <pre><code class="language-css">/* Example using HSL */
+color: hsl(25, 80%, 45%); /* Orange */
+background-color: hsl(45, 100%, 96%); /* Light cream */</code></pre>
+                        </div>
+                        <p><strong>Places to add colors:</strong></p>
+                        <ul class="task-list">
+                            <li>body - Add a subtle background color</li>
+                            <li>main h1 - Add a color to the main heading</li>
+                            <li>.menu-section h2 - Add color to section headings</li>
+                            <li>.menu-item - Add background color to menu items</li>
+                            <li>.menu-item h3 - Add color to item names</li>
+                            <li>.price - Add color to prices (maybe an accent color)</li>
+                        </ul>
+                        <div class="check-section">
+                            <strong>Check:</strong> Does your page have a cohesive color scheme? Does text have good contrast against backgrounds?
+                        </div>
+                    </div>
+
+                    <div class="task-category">
+                        <h3 class="task-title">Task 3: Style Menu Items (Box Model)</h3>
+                        <p><strong>Location:</strong> .menu-item section</p>
+                        <p><strong>What to do:</strong></p>
+                        <ol class="steps-list">
+                            <li>Add padding inside menu items:</li>
+                        </ol>
+                        <div class="code-example">
+                            <pre><code class="language-css">.menu-item {
+    padding: 1rem;
+}</code></pre>
+                        </div>
+                        <ol class="steps-list" style="counter-reset: step-counter 1;">
+                            <li>Add a border or background color</li>
+                            <li>Consider adding border-radius for rounded corners</li>
+                            <li>Make sure there's margin-bottom for spacing between items (already provided, but adjust if needed)</li>
+                        </ol>
+                        <div class="check-section">
+                            <strong>Check:</strong> Do menu items have space inside them? Do they look like distinct "cards"?
+                        </div>
+                    </div>
+
+                    <div class="task-category">
+                        <h3 class="task-title">Task 4: Style and Position Prices</h3>
+                        <p><strong>Location:</strong> .price section</p>
+                        <p><strong>What to do:</strong></p>
+                        <p>Make prices align to the right side of the menu item. You have two options:</p>
+                        
+                        <div class="option-box">
+                            <h5>Option A - Text Align:</h5>
+                            <div class="code-example">
+                                <pre><code class="language-css">.price {
+    text-align: right;
+}</code></pre>
+                            </div>
+                        </div>
+
+                        <div class="option-box">
+                            <h5>Option B - Float:</h5>
+                            <div class="code-example">
+                                <pre><code class="language-css">.price {
+    float: right;
+}</code></pre>
+                            </div>
+                        </div>
+
+                        <ol class="steps-list" style="counter-reset: step-counter 2;">
+                            <li>Make sure price is bold and stands out with color</li>
+                            <li>Consider increasing font-size if needed</li>
+                        </ol>
+                        <div class="check-section">
+                            <strong>Check:</strong> Are prices on the right side? Do they stand out clearly?
+                        </div>
+                    </div>
+
+                    <div class="task-category">
+                        <h3 class="task-title">Task 5: Style Menu Images</h3>
+                        <p><strong>Location:</strong> .menu-image section</p>
+                        <p><strong>What to do:</strong> The images are already floated left. Add styling to make them look nice:</p>
+                        <ol class="steps-list">
+                            <li>Add a border:</li>
+                        </ol>
+                        <div class="code-example">
+                            <pre><code class="language-css">.menu-image {
+    border: 3px solid #yourcolor;
+}</code></pre>
+                        </div>
+                        <ol class="steps-list" style="counter-reset: step-counter 1;">
+                            <li>Add rounded corners:</li>
+                        </ol>
+                        <div class="code-example">
+                            <pre><code class="language-css">border-radius: 8px;</code></pre>
+                        </div>
+                        <ol class="steps-list" style="counter-reset: step-counter 2;">
+                            <li>Or add a box-shadow:</li>
+                        </ol>
+                        <div class="code-example">
+                            <pre><code class="language-css">box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);</code></pre>
+                        </div>
+                        <div class="check-section">
+                            <strong>Check:</strong> Do the images look polished and professional?
+                        </div>
+                    </div>
+
+                    <div class="task-category">
+                        <h3 class="task-title">Task 6: Add Hover Effect to Menu Items</h3>
+                        <p><strong>Location:</strong> .menu-item:hover section</p>
+                        <p><strong>What to do:</strong> Add an effect when someone hovers over a menu item. Choose one or more:</p>
+                        
+                        <div class="option-box">
+                            <h5>Option 1 - Background color change:</h5>
+                            <div class="code-example">
+                                <pre><code class="language-css">.menu-item:hover {
+    background-color: hsl(45, 100%, 92%); /* Slightly darker than normal */
+}</code></pre>
+                            </div>
+                        </div>
+
+                        <div class="option-box">
+                            <h5>Option 2 - Box shadow:</h5>
+                            <div class="code-example">
+                                <pre><code class="language-css">.menu-item:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}</code></pre>
+                            </div>
+                        </div>
+
+                        <div class="option-box">
+                            <h5>Option 3 - Border color change:</h5>
+                            <div class="code-example">
+                                <pre><code class="language-css">.menu-item:hover {
+    border-color: #yourcolor;
+}</code></pre>
+                            </div>
+                        </div>
+
+                        <div class="check-section">
+                            <strong>Check:</strong> Does something change when you hover over menu items?
+                        </div>
+                    </div>
+
+                    <div class="task-category">
+                        <h3 class="task-title">Task 7: Add "Chef's Special" Badge Using Pseudo-Elements</h3>
+                        <p><strong>Location:</strong> .menu-item.special::before section</p>
+                        <p><strong>What to do:</strong> Items with the class "special" should display a badge. Use the ::before pseudo-element:</p>
+                        <div class="code-example">
+                            <pre><code class="language-css">.menu-item.special::before {
+    content: "⭐ Chef's Special";
+    display: inline-block;
+    background-color: hsl(45, 100%, 50%); /* Gold/yellow */
+    color: white;
+    padding: 0.3rem 0.6rem;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    font-weight: bold;
+    margin-right: 0.5rem;
+}</code></pre>
+                        </div>
+                        <p>Alternatively, use an emoji only:</p>
+                        <div class="code-example">
+                            <pre><code class="language-css">content: "⭐";
+font-size: 1.5rem;
+margin-right: 0.5rem;</code></pre>
+                        </div>
+                        <div class="check-section">
+                            <strong>Check:</strong> Do the special items (Bruschetta, Lasagna, Panna Cotta) show a badge?
+                        </div>
+                    </div>
+
+                    <div class="task-category">
+                        <h3 class="task-title">Task 8: Polish Typography</h3>
+                        <p><strong>Location:</strong> Various heading and text sections</p>
+                        <p><strong>What to do:</strong> Make final adjustments to make text look professional:</p>
+                        <ol class="steps-list">
+                            <li>Adjust heading sizes if needed</li>
+                            <li>Adjust line-height for readability (already set to 1.6 in body, but you can refine)</li>
+                            <li>Make sure description text is distinguishable from item names</li>
+                        </ol>
+                        <div class="check-section">
+                            <strong>Check:</strong> Is everything easy to read? Do headings stand out clearly?
+                        </div>
+                    </div>
+
+                    <div class="task-category">
+                        <h3 class="task-title">Task 9: Add Navigation Hover Effect</h3>
+                        <p><strong>Location:</strong> nav a:hover section</p>
+                        <p><strong>What to do:</strong> Add a hover effect for navigation links:</p>
+                        <div class="code-example">
+                            <pre><code class="language-css">nav a:hover {
+    color: hsl(45, 100%, 70%); /* Lighter color */
+    text-decoration: underline;
+}</code></pre>
+                        </div>
+                        <p>Or:</p>
+                        <div class="code-example">
+                            <pre><code class="language-css">nav a:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 0.3rem 0.6rem;
+    border-radius: 4px;
+}</code></pre>
+                        </div>
+                        <div class="check-section">
+                            <strong>Check:</strong> Do navigation links respond when you hover?
+                        </div>
+                    </div>
+
+                    <div class="task-category">
+                        <h3 class="task-title">Task 10: Final Polish</h3>
+                        <p><strong>What to do:</strong></p>
+                        <ol class="steps-list">
+                            <li>Review the wireframe - does your page match?</li>
+                            <li>Check spacing - is everything balanced?</li>
+                            <li>Validate your CSS at https://jigsaw.w3.org/css-validator/</li>
+                            <li>Test in different browser window sizes</li>
+                        </ol>
+                        <div class="check-section">
+                            <strong>Check:</strong> Does it look professional and polished?
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Art Gallery Project -->
+            <div class="section" id="gallery">
+                <div class="section-header">
+                    <h2>Project 2: Art Gallery - Completion Checklist</h2>
+                </div>
+                <div class="section-content">
+                    <div class="task-category">
+                        <h3 class="task-title">Task 1: Import and Apply Google Fonts</h3>
+                        <p><strong>Location:</strong> Top of CSS file, body styling</p>
+                        <p><strong>What to do:</strong></p>
+                        <ol class="steps-list">
+                            <li>Go to Google Fonts</li>
+                            <li>Choose fonts that feel artistic/elegant (examples: Playfair Display, Cormorant, Cinzel for headings; Open Sans, Lato for body)</li>
+                            <li>Import and apply as shown in Restaurant instructions above</li>
+                        </ol>
+                        <div class="check-section">
+                            <strong>Check:</strong> Do your fonts match the gallery aesthetic?
+                        </div>
+                    </div>
+
+                    <div class="task-category">
+                        <h3 class="task-title">Task 2: Add Color Scheme</h3>
+                        <p><strong>Location:</strong> Multiple places throughout CSS</p>
+                        <p><strong>What to do:</strong></p>
+                        <ol class="steps-list">
+                            <li>Choose a gallery color scheme:
+                                <ul style="margin-left: 30px; margin-top: 10px;">
+                                    <li>Consider a dark background (#1a1a1a or similar) for dramatic gallery feel</li>
+                                    <li>Light text on dark background OR</li>
+                                    <li>Light background with dark accents</li>
+                                </ul>
+                            </li>
+                            <li>Use RGB or HSL format</li>
+                        </ol>
+                        <p><strong>Places to add colors:</strong></p>
+                        <ul class="task-list">
+                            <li>body - Background color (consider dark for gallery feel)</li>
+                            <li>main h1 - Heading color</li>
+                            <li>.artwork-card - Background color for cards</li>
+                            <li>.artwork-title - Title color</li>
+                            <li>.artist-name and .artwork-year - Already have colors, adjust as needed</li>
+                        </ul>
+                        <div class="check-section">
+                            <strong>Check:</strong> Does the color scheme feel appropriate for an art gallery?
+                        </div>
+                    </div>
+
+                    <div class="task-category">
+                        <h3 class="task-title">Task 3: Style Artwork Cards (Box Model)</h3>
+                        <p><strong>Location:</strong> .artwork-card section</p>
+                        <p><strong>What to do:</strong></p>
+                        <ol class="steps-list">
+                            <li>Add padding inside cards:</li>
+                        </ol>
+                        <div class="code-example">
+                            <pre><code class="language-css">.artwork-card {
+    padding: 1rem;
+}</code></pre>
+                        </div>
+                        <ol class="steps-list" style="counter-reset: step-counter 1;">
+                            <li>Add background color (if you have dark body background, make cards slightly lighter)</li>
+                            <li>Add border or box-shadow:</li>
+                        </ol>
+                        <div class="code-example">
+                            <pre><code class="language-css">border: 1px solid #ccc;
+/* OR */
+box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);</code></pre>
+                        </div>
+                        <ol class="steps-list" style="counter-reset: step-counter 3;">
+                            <li>Add rounded corners:</li>
+                        </ol>
+                        <div class="code-example">
+                            <pre><code class="language-css">border-radius: 8px;</code></pre>
+                        </div>
+                        <div class="highlight-box">
+                            <h4>Note:</h4>
+                            <p>The cards are already floated with width: 30% to create three columns. Don't change the width or float.</p>
+                        </div>
+                        <div class="check-section">
+                            <strong>Check:</strong> Do the cards look like framed artworks? Is spacing consistent?
+                        </div>
+                    </div>
+
+                    <div class="task-category">
+                        <h3 class="task-title">Task 4: Style Artwork Images</h3>
+                        <p><strong>Location:</strong> .artwork-card img section</p>
+                        <p><strong>What to do:</strong> Add styling to the images:</p>
+                        <ol class="steps-list">
+                            <li>Add a border around images:</li>
+                        </ol>
+                        <div class="code-example">
+                            <pre><code class="language-css">border: 3px solid #fff; /* White border like a mat */</code></pre>
+                        </div>
+                        <ol class="steps-list" style="counter-reset: step-counter 1;">
+                            <li>Or add a shadow:</li>
+                        </ol>
+                        <div class="code-example">
+                            <pre><code class="language-css">box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);</code></pre>
+                        </div>
+                        <ol class="steps-list" style="counter-reset: step-counter 2;">
+                            <li>Consider a subtle border-radius if desired</li>
+                        </ol>
+                        <div class="check-section">
+                            <strong>Check:</strong> Do images look well-presented?
+                        </div>
+                    </div>
+
+                    <div class="task-category">
+                        <h3 class="task-title">Task 5: Style Artwork Information</h3>
+                        <p><strong>Location:</strong> .artwork-title, .artist-name, .artwork-year sections</p>
+                        <p><strong>What to do:</strong></p>
+                        <ol class="steps-list">
+                            <li>Style the artwork title prominently:</li>
+                        </ol>
+                        <div class="code-example">
+                            <pre><code class="language-css">.artwork-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: your-color;
+}</code></pre>
+                        </div>
+                        <ol class="steps-list" style="counter-reset: step-counter 1;">
+                            <li>Artist name and year already have colors - adjust if needed to match your scheme</li>
+                            <li>Make sure text hierarchy is clear (title > artist > year)</li>
+                        </ol>
+                        <div class="check-section">
+                            <strong>Check:</strong> Is information easy to read and well-organized?
+                        </div>
+                    </div>
+
+                    <div class="task-category">
+                        <h3 class="task-title">Task 6: Add Hover Effect to Artwork Cards</h3>
+                        <p><strong>Location:</strong> .artwork-card:hover section</p>
+                        <p><strong>What to do:</strong> Add an effect when hovering over artwork cards. Gallery cards often have subtle, elegant effects:</p>
+                        
+                        <div class="option-box">
+                            <h5>Option 1 - Lift effect with shadow:</h5>
+                            <div class="code-example">
+                                <pre><code class="language-css">.artwork-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+/* Don't forget to add transition to the base .artwork-card */
+.artwork-card {
+    transition: all 0.3s ease;
+}</code></pre>
+                            </div>
+                        </div>
+
+                        <div class="option-box">
+                            <h5>Option 2 - Border color change:</h5>
+                            <div class="code-example">
+                                <pre><code class="language-css">.artwork-card:hover {
+    border-color: your-accent-color;
+}</code></pre>
+                            </div>
+                        </div>
+
+                        <div class="option-box">
+                            <h5>Option 3 - Image effect:</h5>
+                            <div class="code-example">
+                                <pre><code class="language-css">.artwork-card:hover img {
+    opacity: 0.9;
+    transform: scale(1.05);
+}</code></pre>
+                            </div>
+                        </div>
+
+                        <div class="check-section">
+                            <strong>Check:</strong> Do cards respond elegantly to hover?
+                        </div>
+                    </div>
+
+                    <div class="task-category">
+                        <h3 class="task-title">Task 7: Polish Typography and Spacing</h3>
+                        <p><strong>Location:</strong> Various sections</p>
+                        <p><strong>What to do:</strong></p>
+                        <ol class="steps-list">
+                            <li>Adjust .gallery-intro styling to make it elegant</li>
+                            <li>Ensure consistent spacing in .artwork-info section</li>
+                            <li>Review padding and margins throughout</li>
+                        </ol>
+                        <div class="check-section">
+                            <strong>Check:</strong> Does everything feel balanced and gallery-like?
+                        </div>
+                    </div>
+
+                    <div class="task-category">
+                        <h3 class="task-title">Task 8: Add Navigation Hover Effect</h3>
+                        <p><strong>Location:</strong> nav a:hover section</p>
+                        <p><strong>What to do:</strong> Similar to restaurant project - add hover effect for navigation.</p>
+                        <div class="check-section">
+                            <strong>Check:</strong> Do navigation links respond to hover?
+                        </div>
+                    </div>
+
+                    <div class="task-category">
+                        <h3 class="task-title">Task 9: Final Polish</h3>
+                        <p><strong>What to do:</strong></p>
+                        <ol class="steps-list">
+                            <li>Review the wireframe - does your 3-column grid match?</li>
+                            <li>Check that all 10 artworks display properly</li>
+                            <li>Validate your CSS</li>
+                            <li>Make sure floats are cleared (already done with clear:both in footer)</li>
+                        </ol>
+                        <div class="check-section">
+                            <strong>Check:</strong> Professional gallery appearance?
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Event Project -->
+            <div class="section" id="event">
+                <div class="section-header">
+                    <h2>Project 3: Event Schedule - Completion Checklist</h2>
+                </div>
+                <div class="section-content">
+                    <div class="task-category">
+                        <h3 class="task-title">Task 1: Import and Apply Google Fonts</h3>
+                        <p><strong>Location:</strong> Top of CSS file, body styling</p>
+                        <p><strong>What to do:</strong></p>
+                        <ol class="steps-list">
+                            <li>Go to Google Fonts</li>
+                            <li>Choose fonts that feel professional and modern for a tech conference (examples: Roboto, Montserrat, Poppins)</li>
+                            <li>Import and apply as shown above</li>
+                        </ol>
+                        <div class="check-section">
+                            <strong>Check:</strong> Do fonts match the event style?
+                        </div>
+                    </div>
+
+                    <div class="task-category">
+                        <h3 class="task-title">Task 2: Add Color Scheme</h3>
+                        <p><strong>Location:</strong> Multiple places throughout CSS</p>
+                        <p><strong>What to do:</strong></p>
+                        <ol class="steps-list">
+                            <li>Choose an energetic, professional color scheme:
+                                <ul style="margin-left: 30px; margin-top: 10px;">
+                                    <li>Header already uses blue (#2962ff) - work with this or change it</li>
+                                    <li>Choose complementary colors for accents</li>
+                                    <li>Background colors for speaker cards</li>
+                                </ul>
+                            </li>
+                            <li>Use RGB or HSL format</li>
+                        </ol>
+                        <p><strong>Places to add colors:</strong></p>
+                        <ul class="task-list">
+                            <li>body - Background color</li>
+                            <li>main h1 - Heading color</li>
+                            <li>.speaker-card - Background color for cards</li>
+                            <li>.speaker-name - Name color</li>
+                            <li>.session-time - Use an accent color to make time stand out</li>
+                            <li>Keynote speakers should use different colors (see Task 7)</li>
+                        </ul>
+                        <div class="check-section">
+                            <strong>Check:</strong> Does the color scheme feel energetic and appropriate for the event?
+                        </div>
+                    </div>
+
+                    <div class="task-category">
+                        <h3 class="task-title">Task 3: Style Speaker Cards (Box Model)</h3>
+                        <p><strong>Location:</strong> .speaker-card section</p>
+                        <p><strong>What to do:</strong></p>
+                        <ol class="steps-list">
+                            <li>Add padding:</li>
+                        </ol>
+                        <div class="code-example">
+                            <pre><code class="language-css">.speaker-card {
+    padding: 1.5rem;
+}</code></pre>
+                        </div>
+                        <ol class="steps-list" style="counter-reset: step-counter 1;">
+                            <li>Add background color</li>
+                            <li>Add border or box-shadow:</li>
+                        </ol>
+                        <div class="code-example">
+                            <pre><code class="language-css">box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);</code></pre>
+                        </div>
+                        <ol class="steps-list" style="counter-reset: step-counter 3;">
+                            <li>Add border-radius for rounded corners:</li>
+                        </ol>
+                        <div class="code-example">
+                            <pre><code class="language-css">border-radius: 8px;</code></pre>
+                        </div>
+                        <div class="highlight-box">
+                            <h4>Note:</h4>
+                            <p>The speaker images are already floated left. Don't change this.</p>
+                        </div>
+                        <div class="check-section">
+                            <strong>Check:</strong> Do speaker cards look professional with good spacing?
+                        </div>
+                    </div>
+
+                    <div class="task-category">
+                        <h3 class="task-title">Task 4: Style Speaker Images</h3>
+                        <p><strong>Location:</strong> .speaker-image section</p>
+                        <p><strong>What to do:</strong> Add styling to make headshots look professional:</p>
+                        <ol class="steps-list">
+                            <li>Add border-radius to make images circular:</li>
+                        </ol>
+                        <div class="code-example">
+                            <pre><code class="language-css">.speaker-image {
+    border-radius: 50%; /* Makes it circular */
+}</code></pre>
+                        </div>
+                        <p>OR keep them square with slight rounding:</p>
+                        <div class="code-example">
+                            <pre><code class="language-css">border-radius: 8px;</code></pre>
+                        </div>
+                        <ol class="steps-list" style="counter-reset: step-counter 1;">
+                            <li>Add a border:</li>
+                        </ol>
+                        <div class="code-example">
+                            <pre><code class="language-css">border: 3px solid your-color;</code></pre>
+                        </div>
+                        <ol class="steps-list" style="counter-reset: step-counter 2;">
+                            <li>Or add box-shadow:</li>
+                        </ol>
+                        <div class="code-example">
+                            <pre><code class="language-css">box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);</code></pre>
+                        </div>
+                        <div class="check-section">
+                            <strong>Check:</strong> Do speaker images look polished?
+                        </div>
+                    </div>
+
+                    <div class="task-category">
+                        <h3 class="task-title">Task 5: Style Speaker Information</h3>
+                        <p><strong>Location:</strong> .speaker-name, .speaker-title, .session-time, .speaker-bio sections</p>
+                        <p><strong>What to do:</strong></p>
+                        <ol class="steps-list">
+                            <li>Style speaker names prominently:</li>
+                        </ol>
+                        <div class="code-example">
+                            <pre><code class="language-css">.speaker-name {
+    font-size: 1.5rem;
+    color: your-color;
+    font-weight: bold;
+}</code></pre>
+                        </div>
+                        <ol class="steps-list" style="counter-reset: step-counter 1;">
+                            <li>Make session time stand out with a color:</li>
+                        </ol>
+                        <div class="code-example">
+                            <pre><code class="language-css">.session-time {
+    color: hsl(220, 80%, 50%); /* Blue accent */
+    font-weight: bold;
+}</code></pre>
+                        </div>
+                        <ol class="steps-list" style="counter-reset: step-counter 2;">
+                            <li>Speaker title is already styled - adjust as needed</li>
+                            <li>Bio text already has good styling - adjust if desired</li>
+                        </ol>
+                        <div class="check-section">
+                            <strong>Check:</strong> Is information hierarchy clear and easy to scan?
+                        </div>
+                    </div>
+
+                    <div class="task-category">
+                        <h3 class="task-title">Task 6: Add Hover Effect to Speaker Cards</h3>
+                        <p><strong>Location:</strong> .speaker-card:hover section</p>
+                        <p><strong>What to do:</strong> Add hover effect:</p>
+                        <div class="code-example">
+                            <pre><code class="language-css">.speaker-card:hover {
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+    transform: translateX(5px); /* Slight slide right */
+    transition: all 0.3s ease;
+}
+
+/* Add transition to base card */
+.speaker-card {
+    transition: all 0.3s ease;
+}</code></pre>
+                        </div>
+                        <div class="check-section">
+                            <strong>Check:</strong> Do cards respond to hover smoothly?
+                        </div>
+                    </div>
+
+                    <div class="task-category">
+                        <h3 class="task-title">Task 7: Style Keynote Speakers Differently (Specificity Practice)</h3>
+                        <p><strong>Location:</strong> .speaker-card.keynote and .speaker-card.keynote::before sections</p>
+                        <p><strong>What to do:</strong> Make keynote speakers (Dr. Sarah Chen and Dr. James Mitchell) stand out:</p>
+                        <p>Base keynote styling:</p>
+                        <div class="code-example">
+                            <pre><code class="language-css">.speaker-card.keynote {
+    background-color: hsl(220, 80%, 96%); /* Light blue background */
+    border: 2px solid hsl(220, 80%, 50%);
+    /* OR use a darker background with different text colors */
+}</code></pre>
+                        </div>
+                        <p>Add a badge using ::before:</p>
+                        <div class="code-example">
+                            <pre><code class="language-css">.speaker-card.keynote::before {
+    content: "⭐ KEYNOTE SPEAKER";
+    display: block;
+    background-color: hsl(220, 80%, 50%);
+    color: white;
+    padding: 0.4rem 0.8rem;
+    border-radius: 4px;
+    font-weight: bold;
+    font-size: 0.85rem;
+    margin-bottom: 1rem;
+    width: fit-content;
+}</code></pre>
+                        </div>
+                        <div class="check-section">
+                            <strong>Check:</strong> Do keynote speakers clearly stand out from regular speakers?
+                        </div>
+                    </div>
+
+                    <div class="task-category">
+                        <h3 class="task-title">Task 8: Add Navigation Hover Effect</h3>
+                        <p><strong>Location:</strong> nav a:hover section</p>
+                        <p><strong>What to do:</strong> Add hover effect for navigation links.</p>
+                        <div class="check-section">
+                            <strong>Check:</strong> Do navigation links respond to hover?
+                        </div>
+                    </div>
+
+                    <div class="task-category">
+                        <h3 class="task-title">Task 9: Polish Typography</h3>
+                        <p><strong>Location:</strong> Various sections</p>
+                        <p><strong>What to do:</strong></p>
+                        <ol class="steps-list">
+                            <li>Adjust .schedule-intro styling</li>
+                            <li>Ensure good readability in bio paragraphs</li>
+                            <li>Check heading hierarchy</li>
+                        </ol>
+                        <div class="check-section">
+                            <strong>Check:</strong> Is everything readable and well-organized?
+                        </div>
+                    </div>
+
+                    <div class="task-category">
+                        <h3 class="task-title">Task 10: Final Polish</h3>
+                        <p><strong>What to do:</strong></p>
+                        <ol class="steps-list">
+                            <li>Review wireframe - does your page match?</li>
+                            <li>Check that speaker images flow correctly with text</li>
+                            <li>Validate CSS</li>
+                            <li>Test that floats are clearing properly (::after on .speaker-card already does this)</li>
+                        </ol>
+                        <div class="check-section">
+                            <strong>Check:</strong> Professional conference appearance?
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- General Tips -->
+            <div class="tips-section" id="tips">
+                <h3>General Tips for All Projects</h3>
+                
+                <div class="tips-category">
+                    <h4>Box Model Reminders</h4>
+                    <ul class="task-list">
+                        <li>Padding: Space INSIDE an element (between content and border)</li>
+                        <li>Margin: Space OUTSIDE an element (between elements)</li>
+                        <li>Border: Line around an element</li>
+                        <li>Use these to create breathing room and organization</li>
+                    </ul>
+                </div>
+
+                <div class="tips-category">
+                    <h4>Float Reminders</h4>
+                    <ul class="task-list">
+                        <li>Images are already floated - don't change the float property</li>
+                        <li>Make sure floats are cleared (already handled in starter code)</li>
+                        <li>Text should wrap around floated images naturally</li>
+                    </ul>
+                </div>
+
+                <div class="tips-category">
+                    <h4>Color Tips</h4>
+                    <ul class="task-list">
+                        <li>Use RGB: rgb(255, 100, 50)</li>
+                        <li>Use HSL: hsl(15, 100%, 60%)</li>
+                        <li>For transparency: rgba(255, 100, 50, 0.8) or hsla(15, 100%, 60%, 0.8)</li>
+                        <li>Check contrast: dark text on light backgrounds, light text on dark backgrounds</li>
+                    </ul>
+                </div>
+
+                <div class="tips-category">
+                    <h4>Pseudo-Class Syntax</h4>
+                    <div class="code-example">
+                        <pre><code class="language-css">.selector:hover {
+    /* styles */
+}
+
+.selector:active {
+    /* styles */
+}</code></pre>
+                    </div>
+                </div>
+
+                <div class="tips-category">
+                    <h4>Pseudo-Element Syntax</h4>
+                    <div class="code-example">
+                        <pre><code class="language-css">.selector::before {
+    content: "Text or emoji";
+    /* other styles */
+}
+
+.selector::after {
+    content: "";
+    /* other styles */
+}</code></pre>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Testing Section -->
+            <div class="section">
+                <div class="section-header">
+                    <h2>Testing Your Work</h2>
+                </div>
+                <div class="section-content">
+                    <div class="task-category">
+                        <h3 class="task-title">Before You Submit</h3>
+                        <div class="checklist">
+                            <ol class="task-list checklist">
+                                <li>Open in browser - does it match the wireframe?</li>
+                                <li>Hover over interactive elements - do they respond?</li>
+                                <li>Validate CSS - no errors?</li>
+                                <li>Check spacing - is everything balanced?</li>
+                                <li>Check colors - good contrast and cohesive scheme?</li>
+                                <li>Check typography - readable and hierarchical?</li>
+                                <li>Compare to wireframe image - does layout match?</li>
+                            </ol>
+                        </div>
+                    </div>
+
+                    <div class="task-category">
+                        <h3 class="task-title">Common Issues to Check</h3>
+                        <ul class="task-list issues-list">
+                            <li>Prices not aligned right</li>
+                            <li>Badges/checkmarks not showing (forgot content property?)</li>
+                            <li>Hover effects not working (typo in selector?)</li>
+                            <li>Colors look bad (check contrast)</li>
+                            <li>Spacing too tight or too loose (adjust padding/margins)</li>
+                            <li>Images look weird (check border/shadow styling)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Getting Help -->
+            <div class="section">
+                <div class="section-header">
+                    <h2>Getting Help</h2>
+                </div>
+                <div class="section-content">
+                    <div class="task-category">
+                        <h3 class="task-title">If You're Stuck</h3>
+                        <ol class="steps-list">
+                            <li>Read the comment in the CSS carefully - what does it ask for?</li>
+                            <li>Look at the wireframe - what should it look like?</li>
+                            <li>Check for typos in your CSS (common issue!)</li>
+                            <li>Use browser developer tools (F12) to inspect elements</li>
+                            <li>Attend office hours</li>
+                            <li>Review class notes on the specific technique (floats, pseudo-elements, etc.)</li>
+                        </ol>
+                    </div>
+
+                    <div class="task-category">
+                        <h3 class="task-title">Resources</h3>
+                        <ul class="task-list">
+                            <li>MDN CSS Reference</li>
+                            <li>CSS Tricks</li>
+                            <li>W3C CSS Validator</li>
+                            <li>Google Fonts</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Final Encouragement -->
+            <div class="final-section">
+                <h3>You've Got This!</h3>
+                <p>Remember: The goal is to learn CSS techniques by completing a partially-built page. Don't stress about making it "perfect" - focus on:</p>
+                <div class="checklist">
+                    <ol class="task-list">
+                        <li>Following the instructions</li>
+                        <li>Matching the wireframe layout</li>
+                        <li>Demonstrating the required CSS techniques</li>
+                        <li>Creating something you're proud of</li>
+                    </ol>
+                </div>
+                <p style="margin-top: 20px; font-size: 1.2em; font-weight: bold;">Good luck!</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function scrollToSection(sectionId) {
+            const element = document.getElementById(sectionId);
+            element.scrollIntoView({ behavior: 'smooth' });
+            updateActiveNav(sectionId);
+        }
+        
+        function updateActiveNav(activeSection) {
+            const sections = ['overview', 'setup', 'restaurant', 'gallery', 'event', 'tips'];
+            const activeIndex = sections.indexOf(activeSection);
+            
+            document.querySelectorAll('.nav-dot').forEach((dot, index) => {
+                dot.classList.toggle('active', index === activeIndex);
+            });
+        }
+
+        // Add scroll spy functionality
+        window.addEventListener('scroll', () => {
+            const sections = ['overview', 'setup', 'restaurant', 'gallery', 'event', 'tips'];
+            const navDots = document.querySelectorAll('.nav-dot');
+            
+            let current = 0;
+            sections.forEach((sectionId, index) => {
+                const element = document.getElementById(sectionId);
+                if (element) {
+                    const rect = element.getBoundingClientRect();
+                    if (rect.top <= window.innerHeight / 3) {
+                        current = index;
+                    }
+                }
+            });
+            
+            navDots.forEach((dot, index) => {
+                dot.classList.toggle('active', index === current);
+            });
+        });
+    </script>
+</body>
+</html>

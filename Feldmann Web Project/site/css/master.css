@@ -1,0 +1,458 @@
+/* =========================================================
+   GOOGLE FONTS
+========================================================= */
+@import url('https://fonts.googleapis.com/css2?family=Comic+Neue:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap');
+
+/* =========================================================
+   BASE RESET & GLOBAL
+========================================================= */
+html {
+    overflow-y: scroll; /* Prevent layout shift on load */
+}
+
+* {
+    margin: 0; /* Remove default margin */
+    padding: 0; /* Remove default padding */
+    box-sizing: border-box; /* Include padding and border in element's total width and height */
+}
+
+body {
+    margin-top: 40px; /* Space for fixed header */
+    font-family: 'Comic Neue', cursive;     /* Global font */
+    line-height: 1.6; /* Improve readability */
+    color: #50a3e6; /* Global text color */
+    background-color: #080a59;  /* Dark blue background */
+}
+
+/* =========================================================
+   HEADER & NAVIGATION
+========================================================= */
+header {
+    width: 100%;
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 0;
+    position: fixed;
+    left: 0;
+    height: 75px;
+    z-index: 1000;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 5rem;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.1rem;
+    transition: color 0.3s ease;
+    white-space: normal;
+}
+
+nav a:hover {
+    color: #50a3e6;
+    text-decoration: underline;
+}
+
+nav img {
+    width: 20px;
+    height: 20px;
+    vertical-align: middle;
+    margin-right: 8px;
+}
+
+/* =========================================================
+   MAIN CONTENT WRAPPER
+========================================================= */
+main,
+main.container {
+    max-width: 1200px; /* Limit maximum width */
+    margin: 0 auto; /* Center horizontally */
+    padding: 2rem; /* Padding around content */
+    padding-top: 100px; /* Extra top padding for fixed header */
+    text-align: center; /* Center text */
+}
+
+/* =========================================================
+   HERO SECTION
+========================================================= */
+#hero-image {
+    display: flex; /* Use flexbox */
+    flex-direction: column; /* Stack children vertically */
+    align-items: center; /* Center children horizontally */
+    text-align: center; /* Center text */
+    padding: 1rem; /* Padding inside hero section */
+    background-color: #243290; /* Background color */ 
+    border-radius: 25%; /* Rounded corners */
+    overflow: hidden; /* Hide overflow */
+}
+
+#hero-image img {
+    width: 100%; /* Full width */
+    max-width: 400px; /* Maximum width */
+    border-radius: 25%; /* Rounded corners */
+}
+
+#hero-image p {
+    font-size: 1rem; /* Font size */
+    max-width: 90%; /* Maximum width */
+    margin: 1rem auto 0; /* Margin around paragraph */
+    color: #2897e7; /* Text color */
+    line-height: 1.6; /* Line height */
+    word-wrap: break-word; /* Allow long words to break */
+}
+
+/* =========================================================
+   FEATURED ARTIST
+========================================================= */
+.featured-artist {
+    text-align: center; /* Center text */
+    font-size: 1.1rem; /* Font size */
+    margin-bottom: 3rem; /* Margin below */
+}
+
+.featured-artist img {
+    width: 300px; /* Image width */
+    max-width: 90%; /* Maximum width */
+    border-radius: 50px; /* Rounded corners */
+    box-shadow: #1a1a1a 0 4px 8px; /* Shadow effect */
+    margin: 1rem; /* Margin around image */
+}
+
+.featured-artist a:visited {
+    color: #a439e7; /* Visited link color */
+}
+
+.van-gogh-artworks h2 {
+    margin-bottom: 1rem; /* Margin below heading */
+}
+
+/* =========================================================
+   ART SECTION & SLIDESHOW
+========================================================= */
+.art-section {
+    width: 100%; /* Full width */
+    overflow: hidden; /* Clear floats */
+    padding: 0; /* No padding */
+    margin: 0; /* No margin */
+    border-radius: 12px; /* Rounded corners */
+    box-shadow: 10px 0 0 #50a3e6; /* Shadow effect */
+}
+
+.slideshow-container {
+    float: left; /* Float left */
+    width: 600px; /* Container width */
+    height: 600px; /* Container height */
+    margin-right: 2rem; /* Margin to the right */
+    position: relative; /* Position relative for absolute children */
+    border-radius: 12px; /* Rounded corners */
+    overflow: hidden; /* Hide overflow */
+    background-color: #080a59; /* Background color */
+    -webkit-mask-image: -webkit-radial-gradient(white, black); /* Smooth edges for WebKit */
+    mask-image: radial-gradient(white, black); /* Smooth edges */
+    clip-path: inset(0 round 12px); /* Rounded corners */
+    will-change: transform; /* Optimize for animations */
+}
+
+.slide {
+    display: none; /* Hide slides by default */
+    position: absolute; /* Position absolutely within container */
+    inset: 0; /* Stretch to fill container */
+}
+
+.slide.active {
+    display: block; /* Show active slide */
+}
+
+.slide img {
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    object-fit: cover; /* Cover container */
+    transform: translateZ(0); /* Enable GPU acceleration */
+    backface-visibility: hidden; /* Improve rendering */
+}
+
+/* =========================================================
+   YOUR JOURNEY TEXT
+========================================================= */
+.your-journey {
+    float: left; /* Float left */
+    width: 35%; /* Width */
+    max-width: 600px; /* Maximum width */
+    margin: 0 auto 2rem; /* Margin */
+    text-align: center; /* Center text */
+    padding-top: 90px; /* Padding top */
+}
+
+/* Clearfix */
+.art-section::after {
+    content: ""; /* Clearfix content */
+    display: block; /* Display block */
+    clear: both; /* Clear floats */
+}
+
+/* =========================================================
+   VISIT US
+========================================================= */
+.visit-us {
+    display: flex; /* Use flexbox */
+    align-items: center; /* Align items vertically */
+    justify-content: space-between; /* Space between items */
+    gap: 2rem; /* Gap between items */
+    font-size: 1.1rem; /* Font size */
+    margin-top: 3rem; /* Margin top */ 
+    padding: 1rem; /* Padding */
+    border-radius: 12px; /* Rounded corners */
+    box-shadow: -10px 0 0 #50a3e6; /* Shadow effect */
+}
+
+.visit-us img {
+    width: 45%; /* Image width */
+    max-width: 400px; /* Maximum width */
+    border-radius: 12px; /* Rounded corners */
+    box-shadow: #1a1a1a 2px 2px 5px; /* Shadow effect */
+}
+
+.visit-us a {
+    color: #50a3e6; /* Link color */
+    text-decoration: none; /* Remove underline */
+}
+
+.visit-us a:hover {
+    text-decoration: underline; /* Underline on hover */
+}
+
+/* =========================================================
+   ARTWORK CARDS
+========================================================= */
+.artwork-card {
+    width: 31%; /* Card width */
+    float: left; /* Float left */
+    margin: 1%; /* Margin */
+    padding: 6px; /* Padding */
+    background-color: #190981; /* Background color */
+    border-radius: 12px; /* Rounded corners */
+    box-shadow: #1a1a1a 2px 2px 5px; /* Shadow effect */
+    transition: 0.3s ease; /* Smooth transition */
+}
+
+.artwork-card img {
+    width: 80%; /* Image width */
+    margin: 15px auto; /* Center image with margin */
+    display: block; /* Display as block */
+    border-radius: 12px; /* Rounded corners */
+    border: 5px solid #4dacfa; /* Border */
+}
+
+.artwork-card:hover {
+    transform: scale(1.05); /* Scale up on hover */
+    color: aliceblue; /* Text color on hover */
+    box-shadow: #1a1a1a 4px 4px 15px; /* Shadow effect on hover */
+}
+
+/* =========================================================
+   NEWSLETTER
+========================================================= */
+.newsletter-section {
+    background-color: #f0f4f8; /* Light background color */
+    padding: 50px 20px; /* Padding */
+    text-align: center; /* Center text */
+    font-family: Arial, sans-serif; /* Font family */
+}
+
+.newsletter-container h2 {
+    font-size: 2rem; /* Font size */
+    margin-bottom: 10px; /* Margin bottom */
+    color: #333; /* Text color */
+}
+
+.newsletter-container p {
+    color: #555; /* Text color */
+    margin-bottom: 20px; /* Margin bottom */
+}
+
+.newsletter-form {
+    display: flex; /* Use flexbox */
+    justify-content: center; /* Center content */
+    flex-wrap: wrap; /* Allow wrapping */
+    gap: 10px; /* Gap between items */
+}
+
+.newsletter-form input[type="email"] {
+    min-width: 250px; /* Minimum width */
+    padding: 10px 15px; /* Padding */
+    border-radius: 5px; /* Rounded corners */
+    border: 1px solid #ccc; /* Border */
+}
+
+.newsletter-form button {
+    padding: 10px 20px; /* Padding */
+    background-color: #50a3e6; /* Background color */
+    color: white; /* Text color */
+    border-radius: 5px; /* Rounded corners */
+    border: none; /* No border */
+    cursor: pointer; /* Pointer cursor */
+    transition: 0.3s ease; /* Smooth transition */
+}
+
+.newsletter-form button:hover {
+    background-color: #3d82c7; /* Background color on hover */
+}
+
+/* =========================================================
+   FOOTER
+========================================================= */
+.footer {
+    background-color: #1a1a1a; /* Background color */
+    color: white; /* Text color */
+    text-align: center; /* Center text */
+    padding: 1rem; /* Padding */
+    margin-top: 3rem; /* Margin top */
+    clear: both; /* Clear floats */
+}
+
+/* =========================================================
+   ANIMATIONS
+========================================================= */
+@keyframes fade {
+    from { opacity: 0; } /* Start opacity */
+    to { opacity: 1; } /* End opacity */
+}
+
+/* =========================================================
+   HAMBURGER MENU
+========================================================= */
+.hamburger {
+    display: none; /* Hidden by default */
+    position: fixed; /* Fixed position */
+    top: 15px; /* Top position */
+    right: 20px; /* Right position */
+    width: 40px; /* Width */
+    height: 32px; /* Height */
+    cursor: pointer; /* Pointer cursor */
+    flex-direction: column; /* Flex direction */
+    justify-content: space-between; /* Justify content */
+    z-index: 1000; /* Z-index */
+}
+
+.hamburger div {
+    height: 6px; /* Height */
+    width: 100%; /* Width */
+    background: white; /* Background color */
+    border-radius: 3px; /* Rounded corners */
+    transition: 0.3s ease; /* Smooth transition */
+}
+
+/* Hamburger → X */
+.hamburger.active div:nth-child(1) {
+    transform: translateY(13px) rotate(45deg);  /* First line transform */
+}
+
+.hamburger.active div:nth-child(2) {
+    opacity: 0; /* Hide second line */
+}
+
+.hamburger.active div:nth-child(3) {
+    transform: translateY(-13px) rotate(-45deg); /* Third line transform */
+}
+
+/* Mobile Menu */
+.mobile-menu {
+    position: fixed; /* Fixed position */
+    top: 0; /* Top position */
+    right: 0; /* Right position */
+    width: 70%; /* Width */
+    height: 100vh; /* Height */
+    padding: 80px 20px 0; /* Padding */
+    background: #111; /* Background color */
+    box-shadow: 0 0 15px black; /* Box shadow */
+    display: none; /* Hidden by default */
+    z-index: 900; /* Z-index */
+}
+
+.mobile-menu.show {
+    display: block; /* Show menu */
+}
+.mobile-menu ul {
+    list-style: none; /* Remove list style */
+    padding: 0; /* Remove padding */
+}
+
+.mobile-menu a {
+    color: white; /* Text color */
+    padding: 15px 0; /* Padding */
+    display: block; /* Display block */
+    text-decoration: none; /* Remove underline */
+    font-size: clamp(0.8rem, 4vw, 1.6rem); /* Responsive font size */
+}
+
+/* =========================================================
+   MEDIA QUERIES
+========================================================= */
+
+/* Mobile Nav stacking */
+@media (max-width: 900px) {
+    nav img { display: none; } /* Hide nav images */
+}
+
+/* Show hamburger, hide nav */
+@media (max-width: 650px) {
+    nav.main-navigation { display: none; } /* Hide main navigation */
+    .hamburger { display: flex; } /* Show hamburger */
+}
+
+/* Artwork cards (tablet) */
+@media (max-width: 1024px) {
+    .artwork-card {
+        width: 48%; /* Width */
+        margin: 1%; /* Margin */
+    }
+}
+
+/* Artwork cards (mobile) */
+@media (max-width: 600px) {
+    .artwork-card {
+        width: 98%; /* Width */
+        margin: 1% 0; /* Margin */
+    }
+
+    .featured-artist img {
+        width: 80%; /* Width */
+        max-width: 250px; /* Max width */
+    }
+}
+
+/* Stack sections */
+@media (max-width: 768px) {
+    .visit-us,
+    .art-section {
+        display: block; /* Block display */
+    }
+
+    .slideshow-container,
+    .your-journey,
+    .visit-us img {
+        float: none; /* Remove float */
+        width: 100%; /* Width */
+        max-width: 400px; /* Max width */
+        margin: 0 auto 1.5rem; /* Margin */
+    }
+
+    .slideshow-container .slide img {
+        width: 100%; /* Width */
+        height: auto; /* Height */
+    }
+}
+
+/* Adjust body space for stacked nav */
+@media (max-width: 700px) {
+    body {
+        margin-top: 120px; /* Margin top */
+    }
+}

@@ -1,0 +1,454 @@
+@import url('https://fonts.googleapis.com/css2?family=Comic+Neue:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap');
+
+/* ============================================
+   GLOBAL / RESET
+============================================ */
+* {
+    font-family: 'Comic Neue', cursive;
+}
+
+body {
+    padding-top: 75px; /* space for fixed header */
+}
+
+body.retro-bg {
+    background: black;
+    color: white;
+    font-family: "Courier New", monospace;
+}
+
+h2 {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 15px;
+}
+
+/* ============================================
+   HEADER / NAVIGATION
+============================================ */
+header {
+    width: 100%;
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 0;
+    position: fixed;
+    left: 0;
+    height: 75px;
+    z-index: 1000;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 5rem;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.1rem;
+    transition: color 0.3s ease;
+    white-space: normal;
+}
+
+nav a:hover {
+    color: #50a3e6;
+    text-decoration: underline;
+}
+
+nav img {
+    width: 20px;
+    height: 20px;
+    vertical-align: middle;
+    margin-right: 8px;
+}
+
+/* ============================================
+   HAMBURGER MENU
+============================================ */
+.hamburger {
+    display: none;               /* hidden by default, shown only in mobile */
+    width: 35px;
+    height: 28px;
+    cursor: pointer;
+    z-index: 1001;
+    position: fixed;
+    top: 23px;
+    right: 20px;
+}
+
+.hamburger div {
+    position: absolute;           /* absolute positioning for proper rotation */
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: white;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+    transform-origin: center;
+}
+
+/* Position the three lines vertically */
+.hamburger div:nth-child(1) { top: 0; }
+.hamburger div:nth-child(2) { top: 50%; transform: translateY(-50%); }
+.hamburger div:nth-child(3) { bottom: 0; }
+
+/* Hamburger X animation */
+.hamburger.active div:nth-child(1) {
+    top: 50%;
+    transform: translateY(-50%) rotate(45deg);
+}
+.hamburger.active div:nth-child(2) {
+    opacity: 0;
+}
+.hamburger.active div:nth-child(3) {
+    top: 50%;
+    transform: translateY(-50%) rotate(-45deg);
+}
+
+/* Mobile Menu */
+.mobile-menu {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 70%;
+    height: 100vh;
+    background: #111;
+    padding-top: 80px;
+    padding-left: 20px;
+    box-shadow: 0 0 15px black;
+    z-index: 900;
+    transition: right 0.3s ease;
+    overflow-y: auto;
+}
+
+.mobile-menu.show {
+    right: 0;
+}
+
+.mobile-menu ul {
+    list-style: none;
+    padding: 0;
+}
+
+.mobile-menu a {
+    color: white;
+    display: block;
+    padding: 15px 0;
+    text-decoration: none;
+    font-size: clamp(0.8rem, 4vw, 1.6rem);
+    word-wrap: break-word;
+    white-space: normal;
+}
+
+/* ============================================
+   CONTAINERS / MAIN
+============================================ */
+.container {
+    padding: 20px;
+    margin: auto;
+    max-width: 900px;
+}
+
+
+.container.checkerboard {
+    max-width: none !important;
+    width: 100% !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+}
+
+
+.checkerboard {
+    --size: 48px;
+    background:
+      repeating-conic-gradient(
+        #222 0deg 90deg,
+        #eee 90deg 180deg
+      );
+    background-size: var(--size) var(--size);
+    width: 100%;
+    padding: 24px 0;
+    box-sizing: border-box;
+}
+
+
+.container.checkerboard > .form,
+.checkerboard > .form {
+    max-width: 950px;
+    width: 100%;
+    margin: 0;
+    box-sizing: border-box;
+    padding: 20px;
+}
+
+.container.checkerboard .form {
+    margin-left: auto;
+    margin-right: auto;
+}
+/* ============================================
+   FORM / INPUTS
+============================================ */
+.form {
+    background-color: #222;
+    max-width: 950px;
+    box-sizing: border-box;
+    padding: 20px;
+    margin: 0 auto;
+}
+
+body.garage-page .form {
+    display: block;
+    min-height: calc(100vh - 75px);
+}
+
+body.register-page .form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: calc(100vh - 75px);
+}
+
+.form-group {
+    display: block;
+    margin-bottom: 15px;
+    width: 100%;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.radio-group {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.radio-group input[type="radio"] {
+    margin-right: 4px;
+}
+
+.radio-group label {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+input[type="text"],
+input[type="number"],
+input[type="email"],
+input[type="radio"],
+select {
+    background-color: #333;
+    color: white;
+    border: 2px solid silver;
+    border-radius: 5px;
+    padding: 8px;
+    font-family: 'Comic Neue', cursive;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+textarea {
+    background-color: #333;
+    color: white;
+    border: 2px solid silver;
+    border-radius: 5px;
+    padding: 8px;
+    font-family: 'Comic Neue', cursive;
+    margin-bottom: 10px;
+}
+
+::placeholder {
+    color: #bbb;
+}
+
+input[type="number"] {
+    width: 80px;
+}
+
+input, select {
+    border: 2px solid #444;
+    outline: none;
+    transition: 0.2s;
+}
+
+input.touched:invalid,
+select.touched:invalid {
+    border-color: red;
+    box-shadow: 0 0 6px red;
+}
+
+input.touched:valid,
+select.touched:valid {
+    border-color: limegreen;
+    box-shadow: 0 0 6px limegreen;
+}
+
+#carForm {
+    text-align: center;
+}
+
+#carForm button {
+    display: inline-block;
+}
+
+/* ============================================
+   TITLES / BUTTONS
+============================================ */
+.chrome-title {
+    font-size: 3rem;
+    text-align: center;
+    color: #e00000;
+    text-shadow: 0px 0px 3px white, 0 0 10px silver;
+}
+
+.retro-button {
+    padding: 10px 20px;
+    background: red;
+    color: white;
+    border: 3px solid silver;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.2s;
+    margin-bottom: 15px;
+}
+
+.retro-button:hover {
+    background: white;
+    color: red;
+}
+
+/* ============================================
+   TABLES
+============================================ */
+.table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+}
+
+.retro-table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: auto;
+    background: white;
+    color: black;
+}
+
+.retro-table th, .retro-table td {
+    border: 2px solid black;
+    padding: 8px;
+    font-size: clamp(0.7rem, 1.5vw, 1rem);
+    white-space: nowrap;
+    background: #fff;
+}
+
+.table-wrapper::-webkit-scrollbar {
+    height: 8px;
+}
+
+.table-wrapper::-webkit-scrollbar-thumb {
+    background-color: silver;
+    border-radius: 4px;
+}
+
+
+.retro-table tbody tr:nth-child(even) td {
+    background-color: #dad6d6;
+}
+
+.retro-table tbody tr:nth-child(odd) td {
+    background-color: #fdf9f9;
+}
+
+.retro-table tbody tr:hover td {
+    background-color: #eccccc;
+}
+
+.retro-table th {
+    background-color: #a09f9f;
+}
+/* ============================================
+   CONTROLS
+============================================ */
+.controls {
+    margin-bottom: 15px;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+/* ============================================
+   FOOTER
+============================================ */
+.footer {
+    background-color: #1a1a1a;
+    color: white;
+    text-align: center;
+    padding: 1rem;
+    margin-top: 3rem;
+    clear: both;
+    font-family: 'Comic Neue', cursive;
+}
+
+/* ============================================
+   MEDIA QUERIES
+============================================ */
+@media (max-width: 900px) {
+    .main-navigation img {
+        display: none;
+    }
+    header {
+        height: 75px;
+        align-items: center;
+        position: fixed;
+    }
+}
+
+@media (max-width: 650px) {
+    input[type="text"],
+    input[type="number"],
+    input[type="email"],
+    select,
+    textarea,
+    .retro-button{
+        width: 100%;
+        box-sizing: border-box;
+    }
+    .retro-table th, .retro-table td {
+        font-size: 0.7rem;
+        padding: 4px;
+    }
+    .hamburger {
+        display: flex;
+    }
+    nav.main-navigation {
+        display: none;
+    }
+}
+@media (max-width: 450px) {
+    input, select, textarea {
+        text-align: left;
+    }
+    .controls button, .controls select {
+        width: 100%;
+    }
+    .checkerboard {
+        --size: 24px;
+    }
+    .radio-group {
+        justify-content: flex-start;
+    }
+}

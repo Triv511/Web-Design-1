@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Garage Inventory</title>
+    <link rel="stylesheet" href="../css/retro.css">
+    <script src="../js/navbar.js" defer></script>
+    <script src="../js/inventory.js" defer></script>
+</head>
+<body class="retro-bg garage-page">
+
+    <header>
+
+    </header>
+
+    <main class="container checkerboard">
+        <div class="form">
+            <h1 class="chrome-title">Garage Inventory</h1>
+            <div class="controls">
+                <select id="filter-category">
+                    <option value="">Filter by Category</option>
+                    <option value="muscle">Muscle</option>
+                    <option value="classic">Classic</option>
+                    <option value="import">Import</option>
+                    <option value="hot-rod">Hot Rod</option>
+                </select>
+
+                <button id="sort-year" class="retro-button">Sort by Year</button>
+            </div>
+
+            <h2>Total Cars: <span id="car-count">0</span></h2>
+            <div class="table-wrapper">
+                <table class="retro-table">
+                    <thead>
+                        <tr>
+                            <th>Owner</th>
+                            <th>Email</th>
+                            <th>Year</th>
+                            <th>Make</th>
+                            <th>Model</th>
+                            <th>Color</th>
+                            <th>Category</th>
+                            <th>Plate</th>
+                        </tr>
+                    </thead>
+                    <tbody id="inventoryBody"></tbody>
+                </table>
+            </div>
+            <button id="clearInventory">Clear All Cars</button>
+        </div>
+    </main>
+    <footer class="footer">
+            <p>&copy; 2025 Triv's Art Gallery. All rights reserved.</p>
+            <p>Contact us: 555-555-5555</p>
+            <p>Email: Triv8705@gmail.com</p>
+    </footer>
+</body>
+</html>

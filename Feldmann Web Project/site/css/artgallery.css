@@ -1,0 +1,456 @@
+@import url('https://fonts.googleapis.com/css2?family=Comic+Neue:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap');
+
+/* =========================================================
+   GLOBAL SETTINGS & RESET
+========================================================= */
+html {
+  overflow-y: scroll; /* Always show vertical scrollbar */
+}
+
+* {
+  margin: 0; /* Remove default margin */
+  padding: 0; /* Remove default padding */
+  box-sizing: border-box; /* Include padding and border in element's total width and height */
+}
+
+body {
+  font-family: 'Comic Neue', cursive; /* Fun, artistic font */
+  line-height: 1.6; /* Improve readability */
+  color: #4dacfa; /* Light blue text color */
+  background-color: #080a59; /* Dark blue background */
+  margin-top: 40px; /* Space for fixed header */
+}
+
+/* =========================================================
+   HEADER & NAVIGATION
+========================================================= */
+header {
+    width: 100%;
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 0;
+    position: fixed;
+    left: 0;
+    height: 75px;
+    z-index: 1000;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 5rem;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.1rem;
+    transition: color 0.3s ease;
+    white-space: normal;
+}
+
+nav a:hover {
+    color: #50a3e6;
+    text-decoration: underline;
+}
+
+nav img {
+    width: 20px;
+    height: 20px;
+    vertical-align: middle;
+    margin-right: 8px;
+}
+
+/* ============================================
+   HAMBURGER MENU
+============================================ */
+.hamburger {
+    display: none;               /* hidden by default, shown only in mobile */
+    width: 35px;
+    height: 28px;
+    cursor: pointer;
+    z-index: 1001;
+    position: fixed;
+    top: 23px;
+    right: 20px;
+}
+
+.hamburger div {
+    position: absolute;           /* absolute positioning for proper rotation */
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: white;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+    transform-origin: center;
+}
+
+/* Position the three lines vertically */
+.hamburger div:nth-child(1) { top: 0; }
+.hamburger div:nth-child(2) { top: 50%; transform: translateY(-50%); }
+.hamburger div:nth-child(3) { bottom: 0; }
+
+/* Hamburger X animation */
+.hamburger.active div:nth-child(1) {
+    top: 50%;
+    transform: translateY(-50%) rotate(45deg);
+}
+.hamburger.active div:nth-child(2) {
+    opacity: 0;
+}
+.hamburger.active div:nth-child(3) {
+    top: 50%;
+    transform: translateY(-50%) rotate(-45deg);
+}
+
+/* Mobile Menu */
+.mobile-menu {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 70%;
+    height: 100vh;
+    background: #111;
+    padding-top: 80px;
+    padding-left: 20px;
+    box-shadow: 0 0 15px black;
+    z-index: 900;
+    transition: right 0.3s ease;
+    overflow-y: auto;
+}
+
+.mobile-menu.show {
+    right: 0;
+}
+
+.mobile-menu ul {
+    list-style: none;
+    padding: 0;
+}
+
+.mobile-menu a {
+    color: white;
+    display: block;
+    padding: 15px 0;
+    text-decoration: none;
+    font-size: clamp(0.8rem, 4vw, 1.6rem);
+    word-wrap: break-word;
+    white-space: normal;
+}
+
+/* =========================================================
+   MAIN LAYOUT
+========================================================= */
+main {
+  max-width: 1200px; /* Limit width for readability */
+  margin: 0 auto; /* Center horizontally */
+  padding: 2rem; /* Padding for spacing */
+}
+
+main h1 {
+  text-align: center; /* Centered title */
+  font-size: 2.5rem; /* Large font size */
+  margin-bottom: 1rem; /* Space below title */
+  color: #4dacfa; /* Light blue color */
+  text-shadow: #1a1a1a 2px 2px 5px; /* Subtle shadow for depth */
+}
+
+main.container {
+  display: flex; /* Flexbox for layout */
+  flex-direction: column; /* Stack vertically */
+  align-items: center; /* Center items */
+  width: 90%; /* Responsive width */
+  max-width: 1200px; /* Limit width for readability */
+  margin: 0 auto; /* Center horizontally */
+}
+
+/* =========================================================
+   INTRO SECTION
+========================================================= */
+.gallery-intro {
+  text-align: center; /* Centered text */
+  font-size: 1.1rem; /* Slightly larger font */
+  margin: 0 auto 3rem; /* Space below intro */
+  padding: 1rem 1.5rem; /* Padding for spacing */
+  border: 1px solid #4dacfa; /* Light blue border */
+  border-radius: 50px; /* Rounded corners */
+  box-shadow: #1a1a1a 2px 2px 5px; /* Subtle shadow for depth */
+  max-width: 90%; /* Responsive width */
+  min-width: 250px; /* Minimum width */
+  word-wrap: break-word; /* Wrap long words */
+}
+
+/* =========================================================
+   GALLERY GRID
+========================================================= */
+.gallery-grid {
+  display: grid; /* CSS Grid for layout */
+  /* The line below defines how many columns the grid should have 
+  and how wide each one should be. It creates as many columns 
+  as will fit in the container, with each column being at 
+  least 300px wide and taking up available space (1fr) if 
+  there's extra room. */
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Responsive columns */
+  gap: 20px; /* Space between grid items */
+  width: 100%; /* Full width */
+}
+
+/* =========================================================
+   ARTWORK CARDS
+========================================================= */
+.artwork-card {
+  width: 100%; /* Full width of grid cell */
+  padding: 6px; /* Padding for spacing */
+  border-radius: 12px; /* Rounded corners */
+  background-color: #190981; /* Slightly lighter background */
+  box-shadow: #1a1a1a 2px 2px 5px; /* Subtle shadow for depth */
+  text-align: center; /* Center text */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth hover effects */
+}
+
+.artwork-card img {
+  width: 100%; /* Full width of card */
+  height: 250px; /* Fixed height for uniformity */
+  object-fit: cover; /* Cover the area without distortion */
+  display: block; /* Remove bottom space */
+  border-radius: 12px; /* Match card corners */
+}
+
+.artwork-info {
+  padding: 1rem; /* Padding for spacing */
+}
+
+.artwork-title {
+  font-size: 1.2rem; /* Title font size */
+  margin-bottom: 0.5rem; /* Space below title */
+  font-weight: bold; /* Bold title */
+  text-decoration: underline; /* Underline title */
+}
+
+.artist-name {
+  font-size: 0.9rem; /* Artist name font size */
+  color: #4dacfa; /* Light blue color */
+  margin-bottom: 0.3rem; /* Space below name */
+  transition: color 0.3s ease; /* Smooth color change on hover */
+}
+
+.artwork-year {
+  font-size: 0.8rem; /* Year font size */
+  color: #4dacfa; /* Light blue color */
+  transition: color 0.3s ease; /* Smooth color change on hover */
+}
+
+/* --- Hover Effects --- */
+.artwork-card:hover {
+  transform: scale(1.05); /* Slightly enlarge card */
+  box-shadow: #1a1a1a 4px 4px 15px; /* Stronger shadow */
+  color: aliceblue; /* Change text color on hover */
+}
+
+.artwork-card:hover .artist-name,
+.artwork-card:hover .artwork-year {
+  color: #dbe3ea; /* Lighter color on hover */
+  font-weight: bold; /* Bold text on hover */
+}
+
+.artwork-card:hover img {
+  transform: scale(1.03); /* Slightly enlarge image */
+  transition: transform 0.3s ease; /* Smooth transition */
+}
+
+/* =========================================================
+   FOOTER
+========================================================= */
+footer {
+  background-color: #1a1a1a; /* Dark background for contrast */
+  color: white; /* White text for readability */
+  text-align: center; /* Centered text */
+  padding: 1.5rem; /* Padding for spacing */
+  margin-top: 3rem; /* Space above footer */
+  clear: both; /* Clear floats */
+}
+
+/* =========================================================
+   AUDIO PLAYER
+========================================================= */
+.music-player {
+  display: flex; /* Flexbox for layout */
+  flex-direction: column; /* Stack vertically */
+  align-items: center; /* Center items */
+  gap: 1rem; /* Space between elements */
+  max-width: 600px; /* Limit width for readability */
+  width: 90%; /* Responsive width */
+  margin: 20px auto; /* Center horizontally with margin */
+}
+
+/* --- Controls --- */
+.controls {
+  display: flex; /* Flexbox for layout */
+  gap: 1rem; /* Space between buttons */
+  flex-wrap: wrap; /* Wrap buttons on small screens */
+  justify-content: center; /* Center buttons */
+  width: 100%; /* Full width */
+}
+
+.controls button {
+  flex: 1 1 60px; /* Flexible width with minimum */
+  padding: 0.5rem 1rem; /* Padding for spacing */
+  font-size: 1.5rem; /* Large font size */
+  border-radius: 10px; /* Rounded corners */
+  background-color: #4dacfa; /* Light blue background */
+  color: #080a59; /* Dark blue text */
+  border: none; /* Remove default border */
+  cursor: pointer; /* Pointer cursor on hover */
+  transition: transform 0.1s ease, box-shadow 0.1s ease; /* Smooth button effects */
+  box-shadow: 0 4px #080a59; /* Button shadow */
+}
+
+.controls button:hover {
+  background-color: #6dbdff; /* Lighter blue on hover */
+}
+
+.controls button:active {
+  transform: translateY(4px); /* Simulate button press */
+  box-shadow: 0 0 #080a59; /* Remove shadow on press */
+}
+
+/* --- Progress Bar --- */
+.progress-container {
+  display: flex; /* Flexbox for layout */
+  align-items: center; /* Center vertically */
+  gap: 0.5rem; /* Space between elements */
+  width: 100%; /* Full width */
+}
+
+.progress-bar {
+  flex: 1; /* Take up remaining space */
+  background-color: #4dacfa; /* Light blue background */
+  height: 6px; /* Height of progress bar */
+  border-radius: 10px; /* Rounded corners */
+  overflow: hidden; /* Clip overflow */
+  position: relative; /* For positioning inner bar */
+}
+
+#progress {
+  background-color: #080a59; /* Dark blue progress */
+  height: 100%; /* Full height */
+  width: 0%; /* Initial width */
+  transition: width 0.1s linear; /* Smooth width change */
+}
+
+#current-time,
+#duration {
+  font-size: 0.9rem; /* Time font size */
+  min-width: 35px; /* Minimum width for alignment */
+  text-align: center; /* Center text */
+}
+
+/* --- Volume --- */
+.volume-container {
+  position: relative; /* For positioning volume slider */
+  display: flex; /* Flexbox for layout */
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  width: 100%; /* Full width */
+  color: #4dacfa; /* Light blue color */
+}
+
+.volume-icon {
+  cursor: pointer; /* Pointer cursor on hover */
+  font-size: 1.5rem; /* Icon size */
+  margin-right: 0.5rem; /* Space between icon and slider */
+}
+
+#volume {
+  display: none; /* Hidden by default */
+  width: 100%; /* Full width */
+  max-width: 150px; /* Limit max width */
+  color: #4dacfa; /* Light blue color */
+  accent-color: #4dacfa; /* Accent color for slider */
+}
+
+.volume-container.active #volume {
+  cursor: pointer; /* Pointer cursor when visible */
+  display: inline-block; /* Show volume slider */
+}
+
+/* =========================================================
+   RESPONSIVE DESIGN
+========================================================= */
+
+/* Adjust for stacked nav */
+@media (max-width: 700px) {
+  body {
+    margin-top: 120px; /* Adjust for stacked nav */
+  }
+}
+
+/* Smaller layouts */
+@media (max-width: 500px) {
+  .gallery-intro {
+    font-size: 1rem; /* Slightly smaller font */
+    padding: 0.8rem 1rem; /* Adjust padding */
+    margin: 0 10px 2rem; /* Adjust margin */
+  }
+
+  .gallery-grid {
+    grid-template-columns: 1fr; /* Single column layout */
+  }
+}
+
+/* Mobile Nav */
+@media screen and (max-width: 480px) {
+  nav ul {
+    flex-direction: column; /* Stack vertically */
+    gap: 1rem; /* Reduce gap */
+  }
+
+  nav img {
+    width: 24px; /* Larger icon for touch */
+    height: 24px; /* Larger icon for touch */
+  }
+}
+
+/* Tiny Screens */
+@media (max-width: 400px) {
+  .controls button {
+    flex: 1 1 45%; /* Smaller buttons */
+    font-size: 1.2rem; /* Slightly smaller font */
+  }
+
+  #volume {
+    max-width: 100px; /* Limit max width */
+  }
+}
+@media (max-width: 900px) {
+    header {
+        height: 75px;            /* keep same height even in mobile */
+        align-items: center;
+        position: fixed;         /* ensure it stays top */
+    }
+
+    .hamburger {
+        height: 75px;            /* match header height */
+        display: flex; /* show hamburger */
+        align-items: center;       /* center vertically */
+    }
+}
+.main-navigation {
+    position: relative; /* Relative positioning */
+    z-index: 500; /* Ensure it appears above other content */
+}
+
+.main-navigation img {
+    display: inline-block; /* Inline block for alignment */
+}
+
+/* Hide icons when screen gets tighter */
+@media (max-width: 900px) {
+    .main-navigation img {
+        display: none; /* Hide icons when screen gets tighter */  
+    }
+}

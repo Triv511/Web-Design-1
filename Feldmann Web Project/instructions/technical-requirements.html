@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Technical Requirements - HTML/CSS Three-Page Website Project</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(45deg, #4facfe 0%, #00f2fe 100%);
+            color: white;
+            text-align: center;
+            padding: 40px 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: rotate 15s linear infinite;
+        }
+
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            position: relative;
+            z-index: 1;
+        }
+
+        .subtitle {
+            font-size: 1.2em;
+            font-weight: 300;
+            position: relative;
+            z-index: 1;
+        }
+
+        .content {
+            padding: 40px;
+        }
+
+        .requirements-section {
+            margin-bottom: 40px;
+            border: 3px solid #e9ecef;
+            border-radius: 15px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .requirements-section:hover {
+            border-color: #4facfe;
+            box-shadow: 0 15px 30px rgba(79, 172, 254, 0.2);
+        }
+
+        .section-header {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            color: white;
+            padding: 25px;
+            text-align: center;
+            position: relative;
+        }
+
+        .section-header h2 {
+            font-size: 1.8em;
+            margin-bottom: 5px;
+        }
+
+        .section-content {
+            padding: 30px;
+        }
+
+        .requirement-category {
+            background: #f8f9fa;
+            margin: 20px 0;
+            border-radius: 12px;
+            padding: 25px;
+            border-left: 5px solid #4facfe;
+            position: relative;
+        }
+
+        .requirement-category::before {
+            content: '';
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            width: 30px;
+            height: 30px;
+            background: #4facfe;
+            border-radius: 50%;
+            opacity: 0.1;
+        }
+
+        .category-title {
+            color: #2c3e50;
+            font-size: 1.4em;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #4facfe;
+            display: inline-block;
+            padding-bottom: 5px;
+        }
+
+        .requirement-list {
+            margin-left: 0;
+            list-style: none;
+        }
+
+        .requirement-list li {
+            margin-bottom: 12px;
+            padding-left: 30px;
+            position: relative;
+            color: #555;
+            line-height: 1.5;
+        }
+
+        .requirement-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            top: 0;
+            color: #28a745;
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+
+        .nested-list {
+            margin: 10px 0 10px 20px;
+            list-style: none;
+        }
+
+        .nested-list li {
+            padding-left: 25px;
+            margin-bottom: 8px;
+            font-size: 0.95em;
+        }
+
+        .nested-list li::before {
+            content: '▸';
+            color: #4facfe;
+            font-weight: bold;
+            position: absolute;
+            left: 20px;
+        }
+
+        .technique-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .technique-item {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            border: 2px solid #e9ecef;
+            transition: all 0.3s ease;
+        }
+
+        .technique-item:hover {
+            border-color: #4facfe;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(79, 172, 254, 0.2);
+        }
+
+        .technique-item strong {
+            color: #4facfe;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 25px;
+            border-radius: 12px;
+            margin: 25px 0;
+            position: relative;
+        }
+
+        .highlight-box::before {
+            content: '🎯';
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 1.5em;
+        }
+
+        .highlight-box h3 {
+            color: #ffd93d;
+            margin-bottom: 15px;
+        }
+
+        .what-you-receive {
+            background: #e8f5e8;
+            border: 3px solid #28a745;
+            border-radius: 15px;
+            padding: 30px;
+            margin: 30px 0;
+        }
+
+        .what-you-receive h3 {
+            color: #155724;
+            text-align: center;
+            margin-bottom: 25px;
+            font-size: 1.6em;
+        }
+
+        .receive-category {
+            background: white;
+            margin: 15px 0;
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 4px solid #28a745;
+        }
+
+        .receive-category h4 {
+            color: #155724;
+            margin-bottom: 10px;
+            font-size: 1.2em;
+        }
+
+        .submission-section {
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
+            border-radius: 15px;
+            padding: 30px;
+            margin: 30px 0;
+            color: #721c24;
+        }
+
+        .submission-section h3 {
+            text-align: center;
+            margin-bottom: 25px;
+            font-size: 1.8em;
+            color: #721c24;
+        }
+
+        .submission-checklist {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+
+        .submission-checklist h4 {
+            color: #721c24;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .checklist-item {
+            display: flex;
+            align-items: center;
+            margin: 10px 0;
+            padding: 10px;
+            background: white;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .checklist-item:hover {
+            background: #f8f9fa;
+            transform: translateX(5px);
+        }
+
+        .checklist-item::before {
+            content: '☐';
+            margin-right: 10px;
+            font-size: 1.2em;
+            color: #721c24;
+        }
+
+        .validator-links {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .validator-link {
+            display: inline-block;
+            margin: 0 10px;
+            padding: 10px 20px;
+            background: #4facfe;
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+        }
+
+        .validator-link:hover {
+            background: #00f2fe;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(79, 172, 254, 0.3);
+        }
+
+        .file-structure {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 20px;
+            border-radius: 10px;
+            font-family: 'Courier New', monospace;
+            margin: 20px 0;
+            overflow-x: auto;
+        }
+
+        .file-structure h4 {
+            color: #3498db;
+            margin-bottom: 15px;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        .folder {
+            color: #f39c12;
+        }
+
+        .file {
+            color: #2ecc71;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2em;
+            }
+            
+            .content {
+                padding: 20px;
+            }
+            
+            .technique-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .validator-links {
+                flex-direction: column;
+            }
+            
+            .validator-link {
+                margin: 5px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Technical Requirements</h1>
+            <p class="subtitle">All Projects Must Meet These Standards</p>
+        </div>
+
+        <div class="content">
+            <!-- HTML Requirements -->
+            <div class="requirements-section">
+                <div class="section-header">
+                    <h2>HTML Requirements</h2>
+                </div>
+                <div class="section-content">
+                    <div class="requirement-category">
+                        <h3 class="category-title">Code Quality & Structure</h3>
+                        <ul class="requirement-list">
+                            <li>Valid HTML5 (must pass W3C HTML validator)</li>
+                            <li>Semantic HTML tags used appropriately (header, nav, main, section, article, footer, etc.)</li>
+                            <li>All three pages must be linked together with working navigation</li>
+                            <li>Images must include alt text for accessibility</li>
+                        </ul>
+                    </div>
+
+                    <div class="requirement-category">
+                        <h3 class="category-title">File Organization</h3>
+                        <div class="file-structure">
+                            <h4>Required Structure:</h4>
+                            <div>
+                                📁 <span class="folder">Project Folder</span><br>
+                                ├── 📄 <span class="file">index.html</span><br>
+                                ├── � <span class="folder">pages/</span><br>
+                                │   ├── �📄 <span class="file">menu.html / gallery.html / schedule.html</span><br>
+                                │   └── 📄 <span class="file">about.html / artist.html / registration.html</span><br>
+                                ├── 📁 <span class="folder">css/</span><br>
+                                │   └── 📄 <span class="file">styles.css</span><br>
+                                └── 📁 <span class="folder">images/</span><br>
+                                    └── 📄 <span class="file">your-images.jpg</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CSS Requirements -->
+            <div class="requirements-section">
+                <div class="section-header">
+                    <h2>CSS Requirements</h2>
+                </div>
+                <div class="section-content">
+                    <div class="requirement-category">
+                        <h3 class="category-title">Code Standards</h3>
+                        <ul class="requirement-list">
+                            <li>Valid CSS3 (must pass W3C CSS validator)</li>
+                            <li>External stylesheet only (no inline styles)</li>
+                            <li>Organized CSS with comments explaining major sections</li>
+                            <li>Consistent styling across all three pages (navigation, header, footer should look the same)</li>
+                        </ul>
+                    </div>
+
+                    <div class="requirement-category">
+                        <h3 class="category-title">Required CSS Techniques</h3>
+                        <p>Must demonstrate these techniques somewhere in your project:</p>
+                        <div class="technique-grid">
+                            <div class="technique-item">
+                                <strong>Box Model:</strong> margins, padding, borders
+                            </div>
+                            <div class="technique-item">
+                                <strong>Layout:</strong> Float and clear usage
+                            </div>
+                            <div class="technique-item">
+                                <strong>Positioning:</strong> At least one technique (relative/absolute)
+                            </div>
+                            <div class="technique-item">
+                                <strong>Pseudo-classes:</strong> :hover, :focus, :active, etc.
+                            </div>
+                            <div class="technique-item">
+                                <strong>Pseudo-elements:</strong> ::before or ::after
+                            </div>
+                            <div class="technique-item">
+                                <strong>Colors:</strong> RGB or HSL color usage
+                            </div>
+                            <div class="technique-item">
+                                <strong>Typography:</strong> font-family, font-size, line-height, etc.
+                            </div>
+                            <div class="technique-item">
+                                <strong>Web Fonts:</strong> At least one Google Font imported and used
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Design Requirements -->
+            <div class="requirements-section">
+                <div class="section-header">
+                    <h2>Design Requirements</h2>
+                </div>
+                <div class="section-content">
+                    <div class="requirement-category">
+                        <h3 class="category-title">Visual Standards</h3>
+                        <ul class="requirement-list">
+                            <li>Designed for desktop viewing (1000-1200px width)</li>
+                            <li>Consistent color scheme throughout all pages</li>
+                            <li>Consistent typography throughout all pages</li>
+                            <li>Professional appearance with attention to spacing and alignment</li>
+                            <li>No broken images or links</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- What You Will Receive -->
+            <div class="what-you-receive">
+                <h3>What You Will Receive</h3>
+                
+                <div class="receive-category">
+                    <h4>For All Projects:</h4>
+                    <ul class="requirement-list">
+                        <li>This assignment document with complete specifications</li>
+                        <li>Example wireframes/mockups for reference</li>
+                    </ul>
+                </div>
+
+                <div class="receive-category">
+                    <h4>For Page 2 (Complex Layout Page):</h4>
+                    <ul class="requirement-list">
+                        <li>Complete HTML file with all structure coded</li>
+                        <li>Starter CSS file with basic layout begun</li>
+                        <li>Detailed wireframe showing what the finished page should look like</li>
+                        <li>Specific list of CSS tasks to complete</li>
+                    </ul>
+                </div>
+
+                <div class="receive-category">
+                    <h4>For Page 3 (Independent Build Page):</h4>
+                    <ul class="requirement-list">
+                        <li>Wireframe image showing desired layout and design</li>
+                        <li>List of required content elements</li>
+                        <li>No starter code—you build HTML and CSS from scratch</li>
+                    </ul>
+                </div>
+
+                <div class="receive-category">
+                    <h4>For Page 1 (Landing Page):</h4>
+                    <ul class="requirement-list">
+                        <li>Only the requirements listed above</li>
+                        <li>No starter code or wireframes—full creative freedom</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Submission Requirements -->
+            <div class="submission-section">
+                <h3>Submission Requirements</h3>
+                
+                <div class="submission-checklist">
+                    <h4>What to Submit:</h4>
+                    <div class="highlight-box">
+                        <h3>Submit a compressed folder (ZIP file) containing:</h3>
+                        <ul class="requirement-list">
+                            <li>All three HTML files</li>
+                            <li>CSS folder with your stylesheet</li>
+                            <li>Images folder with all images used</li>
+                            <li>A README.txt file with:
+                                <ul class="nested-list">
+                                    <li>Which project option you chose</li>
+                                    <li>Any special instructions for viewing your site</li>
+                                    <li>Citations for any images used (especially for Art Gallery project)</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="submission-checklist">
+                    <h4>File Naming Requirements:</h4>
+                    <ul class="requirement-list">
+                        <li>Main pages must be named: index.html (in root folder), and two other descriptive names in pages folder based on your project
+                            <ul class="nested-list">
+                                <li><strong>Restaurant:</strong> pages/menu.html, pages/about.html</li>
+                                <li><strong>Art Gallery:</strong> pages/gallery.html, pages/artist.html</li>
+                                <li><strong>Event:</strong> pages/schedule.html, pages/registration.html</li>
+                            </ul>
+                        </li>
+                        <li>CSS file: styles.css (in css folder)</li>
+                        <li>Images: Use descriptive names (no spaces, use hyphens: artist-portrait.jpg)</li>
+                    </ul>
+                </div>
+
+                <div class="submission-checklist">
+                    <h4>Before Submitting - Complete This Checklist:</h4>
+                    <div class="checklist-item">Validate your HTML at W3C HTML validator</div>
+                    <div class="checklist-item">Validate your CSS at W3C CSS validator</div>
+                    <div class="checklist-item">Test all navigation links</div>
+                    <div class="checklist-item">Check that all images display correctly</div>
+                    <div class="checklist-item">Review that all three pages have consistent navigation and styling</div>
+                </div>
+
+                <div class="validator-links">
+                    <a href="https://validator.w3.org/" target="_blank" class="validator-link">HTML Validator</a>
+                    <a href="https://jigsaw.w3.org/css-validator/" target="_blank" class="validator-link">CSS Validator</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
