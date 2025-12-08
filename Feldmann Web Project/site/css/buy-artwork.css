@@ -16,36 +16,74 @@
   color: #61cff4;          /* Distinct color for visibility */
 }
 header {
-    width: 100%;
-    background-color: black;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    top: 0;
-    position: fixed;
-    left: 0;
-    height: 75px;
-    z-index: 1000;
+    width: 100%; /* Full width header */
+    background-color: black; /* Retro black background */
+    display: flex; /* Flexbox for layout */
+    justify-content: center; /* Center content horizontally */
+    align-items: center; /* Center content vertically */
+    top: 0; /* Stick to top */
+    position: fixed; /* Fixed position */
+    left: 0; /* Align to left */
+    height: 75px; /* Fixed height */
+    z-index: 1000; /* Ensure header is on top */
 }
 
 nav ul {
-    list-style: none;
-    display: flex;
-    justify-content: center;
-    gap: 5rem;
+    list-style: none; /* Remove default list styling */
+    display: flex; /* Flexbox for horizontal layout */
+    justify-content: center; /* Center items horizontally */
+    gap: clamp(1rem, 5vw, 5rem); /* Responsive spacing between items */
+    margin: 0; /* Remove default margin */
+    padding: 0; /* Remove default padding */
 }
 
 nav a {
-    color: white;
-    text-decoration: none;
-    font-size: 1.1rem;
-    transition: color 0.3s ease;
-    white-space: normal;
+    color: white; /* White text for links */
+    text-decoration: none; /* Remove underline */
+    font-size: 1.1rem; /* Font size for links */
+    transition: color 0.3s ease; /* Smooth color transition */
+    white-space: normal; /* Allow text to wrap */
 }
 
 nav a:hover {
-    color: #50a3e6;
-    text-decoration: underline;
+    color: #50a3e6; /* Hover color */
+    text-decoration: underline; /* Underline on hover */
+}
+
+nav img {
+    width: 20px; /* Icon width */
+    height: 20px; /* Icon height */
+    vertical-align: middle; /* Align icon vertically */
+    margin-right: 8px; /* Space to the right of icon */
+}
+
+/* ============================================
+   MEDIA QUERIES
+============================================ */
+@media (max-width: 1200px) {
+    .main-navigation img {
+        display: none; /* Hide nav icons before text wraps */
+    }
+    header {
+        height: 75px; /* Maintain header height */
+        align-items: center; /* Center items vertically */
+        position: fixed; /* Fix header position */
+    }
+    nav ul {
+        gap: clamp(0.5rem, 3vw, 2rem); /* Smaller gaps on tablets */
+    }
+    nav a {
+        font-size: clamp(0.9rem, 2.5vw, 1.1rem); /* Responsive nav font size */
+    }
+}
+
+@media (max-width: 650px) {
+    .hamburger {
+        display: flex; /* Show hamburger menu */
+    }
+    nav.main-navigation {
+        display: none; /* Hide main navigation */
+    }
 }
 
 nav img {

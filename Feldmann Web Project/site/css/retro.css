@@ -4,245 +4,255 @@
    GLOBAL / RESET
 ============================================ */
 * {
-    font-family: 'Comic Neue', cursive;
+    font-family: 'Comic Neue', cursive; /* Retro comic font */
 }
 
 body {
     padding-top: 75px; /* space for fixed header */
+    margin: 0;
+    overflow-x: hidden; /* Prevent horizontal scroll */
 }
 
 body.retro-bg {
-    background: black;
-    color: white;
-    font-family: "Courier New", monospace;
+    background: black; /* Retro black background */
+    color: white; /* White text for contrast */
+    font-family: "Courier New", monospace; /* Retro monospace font */
 }
 
 h2 {
-    text-align: center;
-    font-size: 2rem;
-    margin-bottom: 15px;
+    text-align: center; /* Centered heading */
+    font-size: 2rem; /* Larger font size */
+    margin-bottom: 15px; /* Spacing below heading */
 }
 
 /* ============================================
    HEADER / NAVIGATION
 ============================================ */
 header {
-    width: 100%;
-    background-color: black;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    top: 0;
-    position: fixed;
-    left: 0;
-    height: 75px;
-    z-index: 1000;
+    width: 100%; /* Full width header */
+    background-color: black; /* Retro black background */
+    display: flex; /* Flexbox for layout */
+    justify-content: center; /* Center content horizontally */
+    align-items: center; /* Center content vertically */
+    top: 0; /* Stick to top */
+    position: fixed; /* Fixed position */
+    left: 0; /* Align to left */
+    height: 75px; /* Fixed height */
+    z-index: 1000; /* Ensure header is on top */
 }
 
 nav ul {
-    list-style: none;
-    display: flex;
-    justify-content: center;
-    gap: 5rem;
+    list-style: none; /* Remove default list styling */
+    display: flex; /* Flexbox for horizontal layout */
+    justify-content: center; /* Center items horizontally */
+    gap: clamp(1rem, 5vw, 5rem); /* Responsive spacing between items */
+    margin: 0; /* Remove default margin */
+    padding: 0; /* Remove default padding */
 }
 
 nav a {
-    color: white;
-    text-decoration: none;
-    font-size: 1.1rem;
-    transition: color 0.3s ease;
-    white-space: normal;
+    color: white; /* White text for links */
+    text-decoration: none; /* Remove underline */
+    font-size: 1.1rem; /* Font size for links */
+    transition: color 0.3s ease; /* Smooth color transition */
+    white-space: normal; /* Allow text to wrap */
 }
 
 nav a:hover {
-    color: #50a3e6;
-    text-decoration: underline;
+    color: #50a3e6; /* Hover color */
+    text-decoration: underline; /* Underline on hover */
 }
 
 nav img {
-    width: 20px;
-    height: 20px;
-    vertical-align: middle;
-    margin-right: 8px;
+    width: 20px; /* Icon width */
+    height: 20px; /* Icon height */
+    vertical-align: middle; /* Align icon vertically */
+    margin-right: 8px; /* Space to the right of icon */
 }
 
 /* ============================================
    HAMBURGER MENU
 ============================================ */
 .hamburger {
-    display: none;               /* hidden by default, shown only in mobile */
-    width: 35px;
-    height: 28px;
-    cursor: pointer;
-    z-index: 1001;
-    position: fixed;
-    top: 23px;
-    right: 20px;
+    display: none; /* Hidden by default */
+    width: 35px; /* Width of hamburger */
+    height: 28px; /* Height of hamburger */
+    cursor: pointer; /* Pointer cursor on hover */
+    z-index: 1001; /* Ensure hamburger is above other elements */
+    position: fixed; /* Fixed position */
+    top: 23px; /* Position from top */
+    right: 20px; /* Position from right */
 }
 
 .hamburger div {
-    position: absolute;           /* absolute positioning for proper rotation */
-    left: 0;
-    width: 100%;
-    height: 4px;
-    background: white;
-    border-radius: 2px;
-    transition: all 0.3s ease;
-    transform-origin: center;
+    position: absolute; /* Absolute positioning for lines */
+    left: 0; /* Align to left */
+    width: 100%; /* Full width */
+    height: 4px; /* Line height */
+    background: white; /* Line color */
+    border-radius: 2px; /* Rounded edges */
+    transition: all 0.3s ease; /* Smooth transition */
+    transform-origin: center; /* Transform origin for rotation */
 }
 
 /* Position the three lines vertically */
-.hamburger div:nth-child(1) { top: 0; }
-.hamburger div:nth-child(2) { top: 50%; transform: translateY(-50%); }
-.hamburger div:nth-child(3) { bottom: 0; }
+.hamburger div:nth-child(1) { top: 0; } /* Top line */
+.hamburger div:nth-child(2) { top: 50%; transform: translateY(-50%); } /* Middle line */
+.hamburger div:nth-child(3) { bottom: 0; } /* Bottom line */
 
 /* Hamburger X animation */
 .hamburger.active div:nth-child(1) {
-    top: 50%;
-    transform: translateY(-50%) rotate(45deg);
+    top: 50%; /* Move top line to center */
+    transform: translateY(-50%) rotate(45deg); /* Rotate top line */
 }
 .hamburger.active div:nth-child(2) {
-    opacity: 0;
+    opacity: 0; /* Hide middle line */
 }
 .hamburger.active div:nth-child(3) {
-    top: 50%;
-    transform: translateY(-50%) rotate(-45deg);
+    top: 50%; /* Move bottom line to center */
+    transform: translateY(-50%) rotate(-45deg); /* Rotate bottom line */
 }
 
 /* Mobile Menu */
 .mobile-menu {
-    position: fixed;
-    top: 0;
-    right: -100%;
-    width: 70%;
-    height: 100vh;
-    background: #111;
-    padding-top: 80px;
-    padding-left: 20px;
-    box-shadow: 0 0 15px black;
-    z-index: 900;
-    transition: right 0.3s ease;
-    overflow-y: auto;
+    position: fixed; /* Fixed position */
+    top: 0; /* Align to top */
+    right: -100%; /* Hide off-screen to the right */
+    width: 70%; /* Width of mobile menu */
+    height: 100vh; /* Full viewport height */
+    background: #111; /* Dark background */
+    padding-top: 80px; /* Padding from top */
+    padding-left: 20px; /* Padding from left */
+    box-shadow: 0 0 15px black; /* Shadow for depth */
+    z-index: 900; /* Ensure mobile menu is above other content */
+    transition: right 0.3s ease; /* Smooth slide-in transition */
+    overflow-y: auto; /* Enable vertical scrolling if needed */
 }
 
 .mobile-menu.show {
-    right: 0;
+    right: 0; /* Slide mobile menu into view */
 }
 
 .mobile-menu ul {
-    list-style: none;
-    padding: 0;
+    list-style: none; /* Remove default list styling */
+    padding: 0; /* Remove padding */
 }
 
 .mobile-menu a {
-    color: white;
-    display: block;
-    padding: 15px 0;
-    text-decoration: none;
-    font-size: clamp(0.8rem, 4vw, 1.6rem);
-    word-wrap: break-word;
-    white-space: normal;
+    color: white; /* White text for links */
+    display: block; /* Block display for full clickable area */
+    padding: 15px 0; /* Vertical padding */
+    text-decoration: none; /* Remove underline */
+    font-size: clamp(0.8rem, 4vw, 1.6rem); /* Responsive font size */
+    word-wrap: break-word; /* Allow long words to break */
+    white-space: normal; /* Allow text to wrap */
 }
 
 /* ============================================
    CONTAINERS / MAIN
 ============================================ */
 .container {
-    padding: 20px;
-    margin: auto;
-    max-width: 900px;
+    padding: clamp(10px, 3vw, 20px); /* Responsive padding around content */
+    margin: auto; /* Center container */
+    max-width: 900px; /* Max width for readability */
+    width: 100%; /* Full width */
+    box-sizing: border-box; /* Include padding in width */
 }
 
 
 .container.checkerboard {
-    max-width: none !important;
-    width: 100% !important;
-    padding-left: 0 !important;
-    padding-right: 0 !important;
-    box-sizing: border-box;
-    display: flex;
-    justify-content: center;
+    max-width: none !important; /* Override max-width */
+    width: 100% !important; /* Full width */
+    padding-left: 0 !important; /* Remove left padding */
+    padding-right: 0 !important; /* Remove right padding */
+    box-sizing: border-box; /* Include padding in width */
+    display: flex; /* Flexbox for layout */
+    justify-content: center; /* Center content horizontally */
 }
 
 
 .checkerboard {
-    --size: 48px;
+    --size: 48px; /* Size of each checker square */
     background:
       repeating-conic-gradient(
         #222 0deg 90deg,
         #eee 90deg 180deg
-      );
-    background-size: var(--size) var(--size);
-    width: 100%;
-    padding: 24px 0;
-    box-sizing: border-box;
+      ); /* Checkerboard pattern */
+    background-position: center; /* Center the background */
+    background-size: var(--size) var(--size); /* Size of each checker square */
+    width: 100%; /* Full width */
+    padding: 24px 0; /* Vertical padding */
+    box-sizing: border-box; /* Include padding in width */
 }
 
 
 .container.checkerboard > .form,
 .checkerboard > .form {
-    max-width: 950px;
-    width: 100%;
-    margin: 0;
-    box-sizing: border-box;
-    padding: 20px;
+    max-width: 950px; /* Max width for form */
+    width: 100%; /* Full width */
+    margin: 0; /* Remove margin */
+    box-sizing: border-box; /* Include padding in width */
+    padding: 20px; /* Padding around form */
 }
 
 .container.checkerboard .form {
-    margin-left: auto;
-    margin-right: auto;
+    margin-left: auto; /* Center form horizontally */ 
+    margin-right: auto; /* Center form horizontally */
 }
 /* ============================================
    FORM / INPUTS
 ============================================ */
 .form {
-    background-color: #222;
-    max-width: 950px;
-    box-sizing: border-box;
-    padding: 20px;
-    margin: 0 auto;
+    background-color: #222; /* Dark background for form */
+    border: 3px solid silver; /* Silver border */
+    border-radius: 5px; /* Rounded corners */
+    max-width: 950px; /* Max width for form */
+    box-sizing: border-box; /* Include padding in width */
+    padding: 20px; /* Padding around form */
+    margin: 0 auto; /* Center form horizontally */
 }
 
 body.garage-page .form {
-    display: block;
-    min-height: calc(100vh - 75px);
+    display: block; /* Display form as block */
+    min-height: calc(100vh - 75px); /* Minimum height to fill viewport */
 }
 
 body.register-page .form {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    min-height: calc(100vh - 75px);
+    display: flex; /* Flexbox for layout */
+    flex-direction: column; /* Stack items vertically */
+    justify-content: center; /* Center items vertically */
+    align-items: center; /* Center items horizontally */
+    min-height: calc(100vh - 75px); /* Minimum height to fill viewport */
 }
 
 .form-group {
-    display: block;
-    margin-bottom: 15px;
-    width: 100%;
+    display: block; /* Block display for form groups */
+    margin-bottom: 15px; /* Spacing below form groups */
+    width: 100%; /* Full width */
 }
 
 .form-group label {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
+    display: block; /* Block display for labels */
+    margin-bottom: 5px; /* Spacing below labels */
+    font-weight: bold; /* Bold font for labels */
 }
 
 .radio-group {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    align-items: center;
-    flex-wrap: wrap;
+    display: flex; /* Flexbox for radio button group */
+    justify-content: center; /* Center radio buttons horizontally */
+    gap: 10px; /* Spacing between radio buttons */
+    align-items: center; /* Align radio buttons vertically */
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
 }
 
 .radio-group input[type="radio"] {
-    margin-right: 4px;
+    margin-right: 4px; /* Spacing to the right of radio buttons */
 }
 
 .radio-group label {
-    display: flex;
-    align-items: center;
-    gap: 4px;
+    display: flex; /* Flexbox for radio button labels */
+    align-items: center; /* Center items vertically */
+    gap: 4px; /* Spacing between label items */
 }
 
 input[type="text"],
@@ -250,170 +260,253 @@ input[type="number"],
 input[type="email"],
 input[type="radio"],
 select {
-    background-color: #333;
-    color: white;
-    border: 2px solid silver;
-    border-radius: 5px;
-    padding: 8px;
-    font-family: 'Comic Neue', cursive;
-    margin-bottom: 10px;
-    text-align: center;
+    background-color: #333; /* Dark background for inputs */
+    color: white; /* White text for inputs */
+    border: 2px solid silver; /* Silver border */
+    border-radius: 5px; /* Rounded corners */
+    padding: 8px; /* Padding inside inputs */
+    font-family: 'Comic Neue', cursive; /* Retro comic font */
+    margin-bottom: 10px; /* Spacing below inputs */
+    text-align: center; /* Center text inside inputs */
 }
 
 textarea {
-    background-color: #333;
-    color: white;
-    border: 2px solid silver;
-    border-radius: 5px;
-    padding: 8px;
-    font-family: 'Comic Neue', cursive;
-    margin-bottom: 10px;
+    background-color: #333; /* Dark background for textarea */
+    color: white; /* White text for textarea */
+    border: 2px solid silver; /* Silver border */
+    border-radius: 5px; /* Rounded corners */
+    padding: 8px; /* Padding inside textarea */
+    font-family: 'Comic Neue', cursive; /* Retro comic font */
+    margin-bottom: 10px; /* Spacing below textarea */
 }
 
 ::placeholder {
-    color: #bbb;
+    color: #bbb; /* Light gray placeholder text */
 }
 
 input[type="number"] {
-    width: 80px;
+    width: 80px; /* Fixed width for number inputs */
 }
 
 input, select {
-    border: 2px solid #444;
-    outline: none;
-    transition: 0.2s;
+    border: 2px solid #444; /* Dark gray border */
+    outline: none; /* Remove default outline */
+    transition: 0.2s; /* Smooth transition for border and shadow */
 }
 
 input.touched:invalid,
 select.touched:invalid {
-    border-color: red;
-    box-shadow: 0 0 6px red;
+    border-color: red; /* Red border for invalid inputs */
+    box-shadow: 0 0 6px red; /* Red shadow for invalid inputs */
 }
 
 input.touched:valid,
 select.touched:valid {
-    border-color: limegreen;
-    box-shadow: 0 0 6px limegreen;
+    border-color: limegreen; /* Lime green border for valid inputs */
+    box-shadow: 0 0 6px limegreen; /* Lime green shadow for valid inputs */
 }
 
 #carForm {
-    text-align: center;
+    text-align: center; /* Center align form */
 }
 
 #carForm button {
-    display: inline-block;
+    display: inline-block; /* Inline block for button */
 }
 
 /* ============================================
    TITLES / BUTTONS
 ============================================ */
 .chrome-title {
-    font-size: 3rem;
-    text-align: center;
-    color: #e00000;
-    text-shadow: 0px 0px 3px white, 0 0 10px silver;
+    font-size: clamp(1.8rem, 6vw, 3rem); /* Responsive font size for chrome title */
+    text-align: center; /* Center align title */
+    color: #e00000; /* Bright red color */
+    text-shadow: 0px 0px 3px white, 0 0 10px silver; /* Glowing text effect */
+    margin: 0.5rem 0; /* Vertical margin */
+    padding: 0 1rem; /* Horizontal padding */
 }
 
 .retro-button {
-    padding: 10px 20px;
-    background: red;
-    color: white;
-    border: 3px solid silver;
-    cursor: pointer;
-    font-weight: bold;
-    transition: 0.2s;
-    margin-bottom: 15px;
+    padding: 10px 20px; /* Padding inside button */
+    font-size: 1.1rem; /* Font size for button */
+    border-radius: 5px; /* Rounded corners */
+    background: red; /* Bright red background */
+    color: white; /* White text */
+    border: 3px solid silver; /* Silver border */
+    cursor: pointer; /* Pointer cursor on hover */
+    font-weight: bold; /* Bold font */
+    margin-bottom: 15px; /* Spacing below button */
+    
+    /* 3D Effect using the button's own background color */
+    box-shadow: 
+        0 4px 0 #b30000,     /* Darker red bottom shadow */
+        0 6px 8px rgba(0,0,0,0.3), /* Soft drop shadow */
+        inset 0 1px 0 rgba(255,255,255,0.2); /* Light highlight on top */
+    
+    /* Transform for initial 3D position */
+    transform: translateY(0);
+    transition: all 0.1s ease; /* Quick transition for responsiveness */
 }
 
 .retro-button:hover {
-    background: white;
-    color: red;
+    background: #ff1a1a; /* Slightly lighter red on hover */
+    color: white; /* Keep white text on hover */
+    box-shadow: 
+        0 6px 0 #b30000,     /* Extend the bottom shadow on hover */
+        0 8px 12px rgba(0,0,0,0.4), /* Deeper drop shadow */
+        inset 0 1px 0 rgba(255,255,255,0.3); /* Brighter highlight */
+    transform: translateY(-2px); /* Lift the button slightly */
+}
+
+.retro-button:active {
+    /* Pressed state - button appears pushed down */
+    transform: translateY(2px); /* Push button down */
+    box-shadow: 
+        0 2px 0 #b30000,     /* Shorter bottom shadow when pressed */
+        0 3px 4px rgba(0,0,0,0.2), /* Reduced drop shadow */
+        inset 0 1px 0 rgba(255,255,255,0.1); /* Subtle highlight when pressed */
+}
+
+/* ============================================
+   3D CLEAR INVENTORY BUTTON
+============================================ */
+#clearInventory {
+    padding: 10px 20px; /* Same padding as retro-button */
+    font-size: 1.1rem; /* Same font size as retro-button */
+    font-weight: bold; /* Bold font */
+    border-radius: 5px; /* Same rounded corners as retro-button */
+    background: red; /* Same red background as retro-button */
+    color: white; /* White text */
+    border: 3px solid silver; /* Same silver border as retro-button */
+    cursor: pointer; /* Pointer cursor on hover */
+    margin-top: 10px; /* Push button 10px below the chart */
+    margin-bottom: 15px; /* Same spacing as retro-button */
+    
+    /* 3D Effect using the button's own background color */
+    box-shadow: 
+        0 4px 0 #b30000,     /* Darker red bottom shadow */
+        0 6px 8px rgba(0,0,0,0.3), /* Soft drop shadow */
+        inset 0 1px 0 rgba(255,255,255,0.2); /* Light highlight on top */
+    
+    /* Transform for initial 3D position */
+    transform: translateY(0);
+    transition: all 0.1s ease; /* Quick transition for responsiveness */
+}
+
+#clearInventory:hover {
+    background: #ff1a1a; /* Slightly lighter red on hover */
+    box-shadow: 
+        0 6px 0 #b30000,     /* Extend the bottom shadow on hover */
+        0 8px 12px rgba(0,0,0,0.4), /* Deeper drop shadow */
+        inset 0 1px 0 rgba(255,255,255,0.3); /* Brighter highlight */
+    transform: translateY(-2px); /* Lift the button slightly */
+}
+
+#clearInventory:active {
+    /* Pressed state - button appears pushed down */
+    transform: translateY(2px); /* Push button down */
+    box-shadow: 
+        0 2px 0 #b30000,     /* Shorter bottom shadow when pressed */
+        0 3px 4px rgba(0,0,0,0.2), /* Reduced drop shadow */
+        inset 0 1px 0 rgba(255,255,255,0.1); /* Subtle highlight when pressed */
 }
 
 /* ============================================
    TABLES
 ============================================ */
 .table-wrapper {
-    width: 100%;
-    overflow-x: auto;
+    width: 100%; /* Full width wrapper */
+    overflow-x: auto; /* Enable horizontal scrolling */
 }
 
 .retro-table {
-    width: 100%;
-    border-collapse: collapse;
-    table-layout: auto;
-    background: white;
-    color: black;
+    width: 100%; /* Full width table */
+    border-collapse: collapse; /* Collapse borders */
+    table-layout: auto; /* Automatic table layout */
+    background: white; /* White background */
+    color: black; /* Black text */
 }
 
 .retro-table th, .retro-table td {
-    border: 2px solid black;
-    padding: 8px;
-    font-size: clamp(0.7rem, 1.5vw, 1rem);
-    white-space: nowrap;
-    background: #fff;
+    border: 2px solid black; /* Black border */
+    padding: 8px; /* Padding inside cells */
+    font-size: clamp(0.7rem, 1.5vw, 1rem); /* Responsive font size */
+    white-space: nowrap; /* Prevent text wrapping */
+    background: #fff; /* White background */
 }
 
 .table-wrapper::-webkit-scrollbar {
-    height: 8px;
+    height: 8px; /* Scrollbar height */
 }
 
 .table-wrapper::-webkit-scrollbar-thumb {
-    background-color: silver;
-    border-radius: 4px;
+    background-color: silver; /* Scrollbar thumb color */
+    border-radius: 4px; /* Rounded corners for scrollbar thumb */
 }
 
 
 .retro-table tbody tr:nth-child(even) td {
-    background-color: #dad6d6;
+    background-color: #dad6d6; /* Even row background color */
 }
 
 .retro-table tbody tr:nth-child(odd) td {
-    background-color: #fdf9f9;
+    background-color: #fdf9f9; /* Odd row background color */
 }
 
 .retro-table tbody tr:hover td {
-    background-color: #eccccc;
+    background-color: #eccccc; /* Hover row background color */
 }
 
 .retro-table th {
-    background-color: #a09f9f;
+    background-color: #a09f9f; /* Header background color */
+    text-align: left; /* Left align header text */
+    text-decoration: underline; /* Underline header text */
+    font-size: 1.1rem; /* Larger font size for headers */
 }
 /* ============================================
    CONTROLS
 ============================================ */
 .controls {
-    margin-bottom: 15px;
-    display: flex;
-    gap: 10px;
-    flex-wrap: wrap;
-    justify-content: center;
+    margin-bottom: 15px; /* Spacing below controls */
+    display: flex; /* Flexbox for layout */
+    gap: 10px; /* Gap between controls */
+    flex-wrap: wrap; /* Allow controls to wrap */
+    justify-content: center; /* Center controls */
 }
 
 /* ============================================
    FOOTER
 ============================================ */
 .footer {
-    background-color: #1a1a1a;
-    color: white;
-    text-align: center;
-    padding: 1rem;
-    margin-top: 3rem;
-    clear: both;
-    font-family: 'Comic Neue', cursive;
+    background-color: #1a1a1a; /* Dark footer background */
+    color: white; /* White text color */
+    text-align: center; /* Center align text */
+    padding: 1rem; /* Padding inside footer */
+    margin-top: 3rem; /* Margin above footer */
+    clear: both; /* Clear floats */
+    font-family: 'Comic Neue', cursive; /* Footer font */
 }
 
 /* ============================================
    MEDIA QUERIES
 ============================================ */
-@media (max-width: 900px) {
+@media (max-width: 1200px) {
     .main-navigation img {
-        display: none;
+        display: none; /* Hide nav icons before text wraps */
     }
     header {
-        height: 75px;
-        align-items: center;
-        position: fixed;
+        height: 75px; /* Maintain header height */
+        align-items: center; /* Center items vertically */
+        position: fixed; /* Fix header position */
+    }
+    nav ul {
+        gap: clamp(0.5rem, 3vw, 2rem); /* Smaller gaps on tablets */
+    }
+    nav a {
+        font-size: clamp(0.9rem, 2.5vw, 1.1rem); /* Responsive nav font size */
+    }
+    .form {
+        padding: 15px; /* Reduce form padding on tablets */
     }
 }
 
@@ -423,32 +516,141 @@ select.touched:valid {
     input[type="email"],
     select,
     textarea,
-    .retro-button{
-        width: 100%;
-        box-sizing: border-box;
+    .retro-button,
+    #clearInventory{
+        width: 100%; /* Full width inputs and buttons */
+        box-sizing: border-box; /* Include padding in width */
+        font-size: clamp(0.9rem, 3vw, 1.1rem); /* Responsive font size */
+        padding: clamp(8px, 2vw, 12px); /* Responsive padding */
     }
     .retro-table th, .retro-table td {
-        font-size: 0.7rem;
-        padding: 4px;
+        font-size: clamp(0.6rem, 2vw, 0.8rem); /* More responsive table font */
+        padding: clamp(3px, 1vw, 6px); /* Responsive table padding */
     }
     .hamburger {
-        display: flex;
+        display: flex; /* Show hamburger menu */
     }
     nav.main-navigation {
-        display: none;
+        display: none; /* Hide main navigation */
+    }
+    h2 {
+        font-size: clamp(1.2rem, 5vw, 2rem); /* Responsive heading size */
+        margin-bottom: 10px;
+    }
+    .form {
+        padding: clamp(10px, 3vw, 20px); /* Responsive form padding */
+        margin: 0 clamp(5px, 2vw, 10px); /* Small side margins */
     }
 }
 @media (max-width: 450px) {
+    body {
+        padding-top: 60px; /* Slightly smaller header on very small screens */
+    }
+    header {
+        height: 60px; /* Smaller header height */
+    }
     input, select, textarea {
-        text-align: left;
+        text-align: left; /* Left align text in inputs on very small screens */
+        min-height: 44px; /* Ensure touch-friendly size */
+        font-size: 16px; /* Prevent zoom on iOS */
+    }
+    .retro-button,
+    #clearInventory {
+        min-height: 44px; /* Touch-friendly button size */
+        font-size: clamp(0.9rem, 4vw, 1.1rem);
+        padding: 12px 16px;
     }
     .controls button, .controls select {
-        width: 100%;
+        width: 100%; /* Full width controls on very small screens */
+        margin-bottom: 8px;
     }
     .checkerboard {
-        --size: 24px;
+        --size: 20px; /* Even smaller checker squares */
+        padding: 16px 0; /* Reduce checkerboard padding */
     }
     .radio-group {
-        justify-content: flex-start;
+        justify-content: center; /* Center radio buttons */
+        flex-direction: column; /* Stack radio buttons vertically */
+        align-items: center; /* Center items horizontally */
+        gap: 0; /* No gap - we'll control spacing manually */
+        margin-top: 2px; /* Reduce space between "Color:" label and radio group */
+    }
+    
+    /* Individual radio button styling in column layout */
+    .radio-group input[type="radio"] {
+        margin-right: 0; /* Remove right margin */
+        margin-bottom: -2px; /* Negative margin to pull label closer */
+        display: block; /* Block display for better control */
+    }
+    
+    .radio-group label {
+        margin-top: -2px; /* Negative top margin to get closer to radio button */
+        margin-bottom: 15px; /* Gap after each color label */
+        display: block; /* Block display to stack vertically */
+        text-align: center; /* Center the color text */
+        line-height: 1; /* Tighter line height */
+        padding-top: 2px; /* Small padding to prevent overlap */
+    }
+    
+    /* Remove margin from the last label to avoid extra space at bottom */
+    .radio-group label:last-child {
+        margin-bottom: 0;
+    }
+    
+    /* Reduce spacing between "Color:" label and radio buttons specifically */
+    .form-group label[for="color"] {
+        margin-bottom: 2px; /* Reduced spacing below Color label */
+    }
+    .chrome-title {
+        font-size: clamp(1.4rem, 8vw, 2rem);
+        padding: 0 0.5rem;
+    }
+    .hamburger {
+        top: 16px; /* Adjust hamburger position for smaller header */
+    }
+    .mobile-menu {
+        padding-top: 60px; /* Match smaller header */
+        width: 85%; /* Wider mobile menu on very small screens */
+    }
+}
+
+/* Extra small screens and landscape phones */
+@media (max-width: 320px) {
+    .container {
+        padding: 8px; /* Reduce container padding */
+    }
+    .form {
+        padding: 8px; /* Reduce form padding */
+        margin: 0 4px; /* Reduce form margin */
+    }
+    .retro-button {
+        font-size: 14px; /* Smaller button font size */
+        padding: 10px 12px; /* Smaller button padding */
+    }
+    .chrome-title {
+        font-size: clamp(1.2rem, 10vw, 1.6rem); /* Smaller chrome title font */
+    }
+    .checkerboard {
+        --size: 16px; /* Smaller checker squares */
+        padding: 12px 0; /* Reduce checkerboard padding */
+    }
+}
+
+/* Landscape orientation adjustments */
+@media (max-height: 500px) and (orientation: landscape) {
+    body {
+        padding-top: 50px; /* Smaller header space in landscape */
+    }
+    header {
+        height: 50px; /* Smaller header height */
+    }
+    .hamburger {
+        top: 13px; /* Adjust hamburger position for smaller header */
+    }
+    .mobile-menu {
+        padding-top: 50px; /* Match smaller header */
+    }
+    .form {
+        min-height: auto; /* Don't force full height in landscape */
     }
 }

@@ -1,27 +1,37 @@
+
+
 document.addEventListener("DOMContentLoaded", () => {
-    const inventoryBody = document.getElementById("inventoryBody");
+    const inventoryBody = document.getElementById("inventoryBody"); // Inventory table body element
     if (!inventoryBody) return; // only run on garage.html
 
-    const countDisplay = document.getElementById("car-count");
-    const filterSelect = document.getElementById("filter-category");
-    const sortBtn = document.getElementById("sort-year");
-    const clearBtn = document.getElementById("clearInventory");
+    const countDisplay = document.getElementById("car-count"); // Car count display element
+    const filterSelect = document.getElementById("filter-category"); // Category filter select element
+    const sortBtn = document.getElementById("sort-year"); // Sort by year button element
+    const clearBtn = document.getElementById("clearInventory"); // Clear inventory button element
+    const clickSound = new Audio('../audio/mouseclick.mp3'); // Path to click sound
+    clickSound.volume = 0.05; // Adjusted volume for click sound
 
-    let allTickets = JSON.parse(localStorage.getItem("garage")) || [];
-    allTickets = allTickets.map(t => {
-        if (t.catagory) { t.category = t.catagory; delete t.catagory; }
+    function playClickSound() { // Play click sound function
+        // Rewind to start each time so it can play again quickly
+        clickSound.currentTime = 0; // rewind to start
+        clickSound.play().catch(() => {}); // ignore autoplay restrictions
+    }
+
+    let allTickets = JSON.parse(localStorage.getItem("garage")) || []; // Load existing tickets from localStorage
+    allTickets = allTickets.map(t => { // Migrate old ticket structure if needed
+        if (t.catagory) { t.category = t.catagory; delete t.catagory; } // Fix typo in category field
         return t;
     });
 
-    let displayedTickets = [...allTickets];
-    let ascending = true;
+    let displayedTickets = [...allTickets]; // Tickets currently displayed in the table
+    let ascending = true; // Sort order flag
 
-    function loadTable(tickets) {
-        inventoryBody.innerHTML = "";
-        if (tickets.length === 0) {
-            inventoryBody.innerHTML = `<tr><td colspan="8" style="text-align:center">No cars found</td></tr>`;
+    function loadTable(tickets) { // Load tickets into the inventory table
+        inventoryBody.innerHTML = ""; // Clear existing table rows
+        if (tickets.length === 0) { // No tickets to display
+            inventoryBody.innerHTML = `<tr><td colspan="8" style="text-align:center">No cars found</td></tr>`; // Display no cars message
         } else {
-            tickets.forEach(t => {
+            tickets.forEach(t => { // Add each ticket as a table row
                 inventoryBody.innerHTML += `
                     <tr>
                         <td>${t.ownerName}</td>
@@ -33,43 +43,44 @@ document.addEventListener("DOMContentLoaded", () => {
                         <td>${t.category}</td>
                         <td>${t.licensePlate}</td>
                     </tr>
-                `;
+                `; // Append ticket row to table body
             });
         }
-        if (countDisplay) countDisplay.textContent = tickets.length;
+        if (countDisplay) countDisplay.textContent = tickets.length; // Update car count display
     }
 
-    loadTable(displayedTickets);
+    loadTable(displayedTickets); // Initial load of the inventory table
 
-    if (filterSelect) {
-        filterSelect.addEventListener("change", () => {
-            const val = filterSelect.value.toLowerCase();
-            displayedTickets = val
-                ? allTickets.filter(t => t.category.toLowerCase() === val)
-                : [...allTickets];
-            loadTable(displayedTickets);
+    if (filterSelect) { // Category filter select element exists
+        filterSelect.addEventListener("change", () => { // Handle category filter change
+            const val = filterSelect.value.toLowerCase(); // Get selected category value
+            displayedTickets = val // Filter tickets by selected category or show all
+                ? allTickets.filter(t => t.category.toLowerCase() === val) // Filter by category
+                : [...allTickets]; // Show all tickets if no category selected
+            loadTable(displayedTickets); // Reload table with filtered tickets
         });
     }
 
-    if (sortBtn) {
-        sortBtn.addEventListener("click", () => {
-            displayedTickets.sort((a, b) =>
-                ascending ? a.carYear - b.carYear : b.carYear - a.carYear
+    if (sortBtn) { // Sort by year button element exists
+        sortBtn.addEventListener("click", () => { // Handle sort by year button click
+            playClickSound(); // Play click sound on sort button click
+            displayedTickets.sort((a, b) => // Sort tickets by car year
+                ascending ? a.carYear - b.carYear : b.carYear - a.carYear // Toggle sort order
             );
-            ascending = !ascending;
-            loadTable(displayedTickets);
+            ascending = !ascending; // Toggle sort order for next click
+            loadTable(displayedTickets); // Reload table with sorted tickets
         });
     }
 
-    if (clearBtn) {
-        clearBtn.addEventListener("click", () => {
-            console.log("Clear inventory clicked");
-            if (!confirm("Are you sure you want to delete all cars?")) return;
-            localStorage.removeItem("garage");
-            allTickets = [];
-            displayedTickets = [];
-            if (filterSelect) filterSelect.value = "";
-            loadTable(displayedTickets);
+    if (clearBtn) { // Clear inventory button element exists
+        clearBtn.addEventListener("click", () => { // Handle clear inventory button click
+            playClickSound(); // Play click sound on clear button click
+            if (!confirm("Are you sure you want to delete all cars?")) return; // Confirm before clearing inventory
+            localStorage.removeItem("garage"); // Remove garage data from localStorage
+            allTickets = []; // Clear all tickets array
+            displayedTickets = []; // Clear displayed tickets array
+            if (filterSelect) filterSelect.value = ""; // Reset category filter
+            loadTable(displayedTickets); // Reload table with cleared tickets
         });
     }
 });
