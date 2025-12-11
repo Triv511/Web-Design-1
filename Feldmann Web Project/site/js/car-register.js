@@ -22,16 +22,61 @@ if (form) {
     const emailField = safeGet("email"); // Email input
     const notesField = safeGet("optional-notes"); // Optional notes textarea
     const countDisplay = safeGet("optional-count"); // Character count display
-    const clickSound = new Audio('../audio/mouseclick.mp3'); // Path to click sound
-    clickSound.volume = 0.05; // Adjusted volume for click sound
+    
+    // Robust audio that works after page navigation
+    let clickSound = null; // Click sound audio object
+    let audioReady = false; // Flag to track if audio is enabled
 
+    const createFreshAudio = () => { // Create a fresh audio object
+        clickSound = new Audio('../audio/mouseclick.mp3'); // Path to click sound
+        clickSound.volume = 0.05; // Set click sound volume
+        audioReady = false; // Reset audio ready flag
+    };
 
-    function playClickSound() { // Play click sound function
-        // Rewind to start each time so it can play again quickly
-        clickSound.currentTime = 0; // rewind to start
-        clickSound.play().catch(() => {}); // ignore autoplay restrictions
-    }
+    const enableAudio = () => { // Enable audio on first interaction
+        if (!audioReady && clickSound) { // If audio not yet enabled
+            clickSound.play().then(() => { // Try to play sound
+                clickSound.pause(); // Pause immediately after playing
+                clickSound.currentTime = 0; // Reset to start
+                audioReady = true; // Mark audio as ready
+            }).catch(() => {
+                // If it fails, create fresh audio and try again
+                createFreshAudio(); // Create fresh audio object
+                clickSound.play().then(() => { // Try to play sound
+                    clickSound.pause(); // Pause immediately after playing
+                    clickSound.currentTime = 0; // Reset to start
+                    audioReady = true; // Mark audio as ready
+                }).catch(() => { // If it fails again
+                    audioReady = true; // Give up but mark ready
+                });
+            });
+        }
+    };
 
+    const playClickSound = () => { // Play click sound function
+        if (!clickSound || clickSound.error) { // If audio is missing or errored
+            createFreshAudio(); // Create fresh audio if missing or errored
+        }
+        if (clickSound) { // If audio exists
+            clickSound.currentTime = 0; // Rewind to start
+            clickSound.play().catch(() => { // If play fails
+                // If play fails, try with fresh audio
+                createFreshAudio(); // Create fresh audio object
+                if (clickSound) { // If audio exists
+                    clickSound.currentTime = 0; // Rewind to start
+                    clickSound.play().catch(() => {}); // Ignore autoplay restrictions
+                }
+            });
+        }
+    };
+
+    // Initialize audio
+    createFreshAudio(); // Create fresh audio object
+
+    // Enable audio on any interaction
+    document.addEventListener('click', enableAudio); // Enable on click
+    document.addEventListener('keydown', enableAudio); // Enable on keydown
+    document.addEventListener('touchstart', enableAudio); // Enable on touchstart
 
     // Owner field error span
     const ownerErrorId = "ownerError"; // Owner name error span ID
@@ -107,10 +152,22 @@ if (form) {
         });
     }
 
+    // Add click sound to submit button directly
+    const submitButton = document.querySelector('button[type="submit"]');
+    if (submitButton) {
+        submitButton.addEventListener('click', (e) => {
+            // Force fresh audio and enable on every click to handle browser suspension
+            createFreshAudio();
+            enableAudio();
+            setTimeout(() => playClickSound(), 20); // Slightly longer delay for suspended contexts
+        });
+    }
+
+
+
     // Form submission
     form.addEventListener("submit", (event) => { // Handle form submission
         event.preventDefault(); // Prevent default form submission
-        playClickSound(); // Play click sound on form submission
 
         const owner = ownerField.value.trim(); // Get trimmed owner name
         const email = emailField.value.trim(); // Get trimmed email
@@ -120,7 +177,6 @@ if (form) {
         const plate = safeGet("license-plate").value.trim(); // Get trimmed license plate
         const category = safeGet("category").value; // Get selected category
         const colorInput = document.querySelector("input[name='color']:checked"); // Get selected color input
-
 
         if (!owner || !email || !make || !model || !plate || !category || !colorInput) { // Check for required fields
             alert("Please fill in all required fields."); // Alert if any required field is missing
@@ -165,9 +221,10 @@ if (form) {
         allTickets.push(ticket); // Add new ticket to the list
         localStorage.setItem("garage", JSON.stringify(allTickets)); // Save updated tickets to localStorage
 
-        alert("Car registered successfully!"); // Alert success message
-        window.location.href = "garage.html"; // Redirect to garage page
+        // Short delay to let sound play, then show success and redirect
+        setTimeout(() => { // Delay for click sound
+            alert("Car registered successfully!"); // Show success alert
+            window.location.href = "garage.html"; // Redirect to garage page
+        }, 150); // 150ms delay to allow click sound to play
     });
 }
-
-

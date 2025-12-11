@@ -8,13 +8,32 @@ document.addEventListener("DOMContentLoaded", () => {
     const filterSelect = document.getElementById("filter-category"); // Category filter select element
     const sortBtn = document.getElementById("sort-year"); // Sort by year button element
     const clearBtn = document.getElementById("clearInventory"); // Clear inventory button element
-    const clickSound = new Audio('../audio/mouseclick.mp3'); // Path to click sound
-    clickSound.volume = 0.05; // Adjusted volume for click sound
+
+    // Audio setup that works reliably after page navigation
+    let audioReady = false; // Flag to track if audio is enabled
+    const clickSound = new Audio('../audio/mouseclick.mp3');
+    clickSound.volume = 0.05; // Set click sound volume
+
+    const enableAudio = () => { // Enable audio on first interaction
+        if (!audioReady) { // If audio not yet enabled
+            clickSound.play().then(() => { // Try to play sound
+                clickSound.pause(); // Pause immediately after playing
+                clickSound.currentTime = 0; // Reset to start
+                audioReady = true; // Mark audio as ready
+            }).catch(() => { // Handle play failure
+                audioReady = true; // Mark ready even if play fails
+            });
+        }
+    };
+
+    // Enable audio immediately on any interaction
+    document.addEventListener('click', enableAudio); // Enable on click
+    document.addEventListener('keydown', enableAudio); // Enable on keydown
+    document.addEventListener('touchstart', enableAudio); // Enable on touchstart
 
     function playClickSound() { // Play click sound function
-        // Rewind to start each time so it can play again quickly
-        clickSound.currentTime = 0; // rewind to start
-        clickSound.play().catch(() => {}); // ignore autoplay restrictions
+        clickSound.currentTime = 0; // Rewind to start
+        clickSound.play().catch(() => {}); // Ignore autoplay restrictions
     }
 
     let allTickets = JSON.parse(localStorage.getItem("garage")) || []; // Load existing tickets from localStorage
